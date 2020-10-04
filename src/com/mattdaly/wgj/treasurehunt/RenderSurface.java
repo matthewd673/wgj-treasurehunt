@@ -3,8 +3,11 @@ package com.mattdaly.wgj.treasurehunt;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+
 //custom jcomponent whose paint event will be used to render game elements
-public class RenderSurface extends Canvas {
+public class RenderSurface extends JComponent {
 
 	int w;
 	int h;
@@ -17,11 +20,14 @@ public class RenderSurface extends Canvas {
 	
 	//main draw loop
 	public void paint(Graphics g)
-	{		
-		g.clearRect(0, 0, w, h);
+	{	
 		
-		//actual drawing code
-		drawSprite(g, Sprites.frog, new Rectangle(Main.frogX, 40, 24, 24));
+		//begin draw calls
+		
+		drawSprite(g, Sprites.frog, new Rectangle(Main.frogX, Main.frogY, 24, 24));
+		
+		//call super paint (end of draw calls)
+		super.paint(g);
 		
 	}
 	

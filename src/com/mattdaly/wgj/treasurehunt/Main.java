@@ -10,10 +10,12 @@ public class Main {
 
 	//important things
 	static JFrame frame;
-	static RenderSurface renderer;
+	static RenderSurface renderSurface;
+	static InputManager inputManager;
 	
 	//temporary!
-	public static int frogX = 0;
+	public static int frogX = 100;
+	public static int frogY = 100;
 	
 	public static void main(String args[]) {
 		
@@ -37,8 +39,12 @@ public class Main {
 		frame.setResizable(false);
 		
 		//create rendersurface on frame
-		renderer = new RenderSurface(w, h);
-		frame.add(renderer);
+		renderSurface = new RenderSurface(w, h);
+		frame.add(renderSurface);
+		
+		//create inputmanager
+		inputManager = new InputManager();
+		frame.addKeyListener(inputManager);
 		
 		//display
 		frame.setVisible(true);
@@ -68,11 +74,19 @@ public class Main {
 	//called on every update
 	static void update()
 	{
-		//call render code
-		renderer.update(frame.getGraphics());
+
+		renderSurface.repaint(); //call render code
 		
-		//temporary!
-		frogX++;
+		//basic frog movement
+		//in the end, this should not be in the main update loop
+		if(inputManager.isKeyPressed('w'))
+			frogY--;
+		if(inputManager.isKeyPressed('s'))
+			frogY++;
+		if(inputManager.isKeyPressed('a'))
+			frogX--;
+		if(inputManager.isKeyPressed('d'))
+			frogX++;
 	}
 	
 }
