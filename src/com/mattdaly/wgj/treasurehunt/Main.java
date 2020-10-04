@@ -12,6 +12,7 @@ public class Main {
 	static JFrame frame;
 	static RenderSurface renderSurface;
 	static InputManager inputManager;
+	static EntityManager entityManager;
 	
 	//temporary!
 	public static int frogX = 100;
@@ -24,6 +25,12 @@ public class Main {
 		
 		//create frame
 		createFrame("Treasure Hunt", 800, 600);
+		
+		//create entity manager
+		entityManager = new EntityManager();
+		
+		Frog frog = new Frog(Sprites.frog, 100, 100);
+		entityManager.addEntity(frog);
 		
 		//begin update loop
 		beginUpdateLoop();
@@ -75,18 +82,9 @@ public class Main {
 	static void update()
 	{
 
+		entityManager.update();
 		renderSurface.repaint(); //call render code
 		
-		//basic frog movement
-		//in the end, this should not be in the main update loop
-		if(inputManager.isKeyPressed('w'))
-			frogY--;
-		if(inputManager.isKeyPressed('s'))
-			frogY++;
-		if(inputManager.isKeyPressed('a'))
-			frogX--;
-		if(inputManager.isKeyPressed('d'))
-			frogX++;
 	}
 	
 }

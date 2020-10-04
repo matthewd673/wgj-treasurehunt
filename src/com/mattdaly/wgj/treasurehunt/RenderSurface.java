@@ -23,8 +23,9 @@ public class RenderSurface extends JComponent {
 	{	
 		
 		//begin draw calls
-		
-		drawSprite(g, Sprites.frog, new Rectangle(Main.frogX, Main.frogY, 24, 24));
+		for(Entity e : Main.entityManager.entityList) {
+			e.render(g);
+		}	
 		
 		//call super paint (end of draw calls)
 		super.paint(g);
@@ -32,7 +33,7 @@ public class RenderSurface extends JComponent {
 	}
 	
 	//simplified draw call
-	void drawSprite(Graphics g, BufferedImage image, Rectangle rect)
+	public static void drawSprite(Graphics g, BufferedImage image, Rectangle rect)
 	{
 		g.drawImage(
 				image,
