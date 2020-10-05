@@ -35,7 +35,8 @@ public class Entity {
 	}
 	
 	public void render(Graphics g) {
-		RenderSurface.drawSprite(g, sprite, new Rectangle((int)x, (int)y, w, h));
+		Rectangle renderRect = Main.renderSurface.cam.getRenderRect(this); //get renderrect from camera
+		RenderSurface.drawSprite(g, sprite, renderRect);
 	}
 	
 }

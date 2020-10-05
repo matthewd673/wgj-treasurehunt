@@ -6,9 +6,7 @@ public class DirtBlock extends Block{
 	
 	
 	public DirtBlock(int x, int y){
-		super(x, y, Sprites.dirt, 1);
-		
-		
+		super(x, y, Sprites.dirt, 1);		
 	}
 
 }

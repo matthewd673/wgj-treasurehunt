@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 //custom jcomponent whose paint event will be used to render game elements
 public class RenderSurface extends JComponent {
 
+	public Camera cam;
+	
 	int w;
 	int h;
 	
@@ -16,6 +18,8 @@ public class RenderSurface extends JComponent {
 	{
 		this.w = w;
 		this.h = h;
+		
+		cam = new Camera(0, 0, w, h);
 	}
 	
 	//main draw loop

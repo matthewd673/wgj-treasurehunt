@@ -20,6 +20,8 @@ public final class Sprites {
 	public static BufferedImage dirt;
 	public static BufferedImage toughDirt;
 	public static BufferedImage treasure;
+	public static BufferedImage water;
+	public static BufferedImage ice;
 	public static BufferedImage surface;
 	public static BufferedImage sky;
 	
@@ -36,6 +38,8 @@ public final class Sprites {
 			dirt = ImageIO.read(new File("res/dirt.png"));
 			toughDirt = ImageIO.read(new File("res/tough-dirt.png"));
 			treasure = ImageIO.read(new File("res/treasure.png"));
+			water = ImageIO.read(new File("res/water.png"));
+			ice = ImageIO.read(new File("res/ice.png"));
 			surface = ImageIO.read(new File("res/surface.png"));
 			sky = ImageIO.read(new File("res/sky.png"));
 			
