@@ -11,8 +11,11 @@ public class Block extends Entity{
 	
 	public boolean broken;
 	private int toughness;
-	public int x,y;
-	public BufferedImage sprite;
+	
+	//not sure why these were defined again for blocks:
+	//seems to work without them...
+	//public int x,y;
+	//public BufferedImage sprite;
 	
 	public Block(int x, int y, BufferedImage sprite, int toughness) {
 		super(sprite, x, y, 32, 32);
@@ -28,8 +31,15 @@ public class Block extends Entity{
 	public void MinusToughness() {
 	
 		toughness--;
+		if(toughness<2)
+			sprite = Sprites.dirt;
 		if(toughness<1)
-			broken = true;
+			breakBlock();
+	}
+	
+	public void breakBlock() {
+		broken = true;
+		sprite = Sprites.background;
 	}
 	
 	

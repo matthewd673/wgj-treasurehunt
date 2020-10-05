@@ -33,7 +33,12 @@ public class Main {
 		
 		//make a board
 		gameBoard = new Board(20, 40);
+		gameBoard.generateBoard();
 		gameBoard.populateBoardEntities();
+		
+		//create a drill
+		Drill drill = new Drill(0, 0);
+		entityManager.addEntity(drill);
 		
 		//begin update loop
 		beginUpdateLoop();

@@ -20,6 +20,10 @@ public class Board {
 		this.h = h;
 		
 		board = new Block[w][h];
+			
+	}
+	
+	public void generateBoard() {
 		
 		x = 0;
 		y = 0;
@@ -31,32 +35,51 @@ public class Board {
 				double rand  = Math.random();
 				
 				if(rand<.6) {
-					board[i][j] = new DirtBlock(x, y);
+					DirtBlock dirtBlock = new DirtBlock(x, y);
+					if(rand < .1) {
+						dirtBlock.breakBlock();
+					}
+					board[i][j] = dirtBlock;
 				}
 				else if(rand<.95) {
 					board[i][j] = new ToughDirtBlock(x, y);
 				}
 				else 
 					board[i][j] = new TreasureBlock(x, y);
-		              
-		    x += DirtBlock.w;
+				
+				//randomly break some blocks (these will always be normal dirt, based on the above generator)
+				if(rand < .1)
+					board[i][j].MinusToughness();
+				
+				//set air and surface blocks at set y levels
+				if(i == 1)
+					board[i][j] = new SurfaceBlock(x, y);
+		        if(i == 0)
+		        {
+		        	Block skyBlock = new Block(x, y, Sprites.sky, 0);
+		        	skyBlock.broken = true;
+		        	board[i][j] = skyBlock;
+		        }
+				
+				x += DirtBlock.w;
 		    }
+			
 			x = 0;
 			y += DirtBlock.h;
-		}
 			
 		}
 		
-		public void populateBoardEntities() {
-			for(int i = 0; i < w; i++) {
-				for(int j = 0; j < h; j++) {
-					Main.entityManager.addEntity(board[i][j]);
-				}
+	}
+		
+	public void populateBoardEntities() {
+		for(int i = 0; i < w; i++) {
+			for(int j = 0; j < h; j++) {
+				Main.entityManager.addEntity(board[i][j]);
 			}
 		}
-		
-		
 	}
+		
+}
 	
 	
 

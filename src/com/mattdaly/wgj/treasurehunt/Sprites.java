@@ -20,6 +20,8 @@ public final class Sprites {
 	public static BufferedImage dirt;
 	public static BufferedImage toughDirt;
 	public static BufferedImage treasure;
+	public static BufferedImage surface;
+	public static BufferedImage sky;
 	
 	public static void loadSprites() {
 		
@@ -34,6 +36,8 @@ public final class Sprites {
 			dirt = ImageIO.read(new File("res/dirt.png"));
 			toughDirt = ImageIO.read(new File("res/tough-dirt.png"));
 			treasure = ImageIO.read(new File("res/treasure.png"));
+			surface = ImageIO.read(new File("res/surface.png"));
+			sky = ImageIO.read(new File("res/sky.png"));
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
