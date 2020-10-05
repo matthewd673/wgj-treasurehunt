@@ -12,13 +12,13 @@ public class Frog extends Entity {
 	{
 		
 		if(Main.inputManager.isKeyPressed('w'))
-			y--;
+			y-=2;
 		if(Main.inputManager.isKeyPressed('s'))
-			y++;
+			y+=2;
 		if(Main.inputManager.isKeyPressed('a'))
-			x--;
+			x-=2;
 		if(Main.inputManager.isKeyPressed('d'))
-			x++;
+			x+=2;
 		
 		super.update();
 	}

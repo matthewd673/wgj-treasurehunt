@@ -10,8 +10,8 @@ public class Entity {
 	
 	public float x;
 	public float y;
-	public int w;
-	public int h;
+	public static int w;
+	public static int h;
 	
 	public Velocity v;
 	public Acceleration a;
