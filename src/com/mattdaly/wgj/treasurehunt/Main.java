@@ -14,6 +14,8 @@ public class Main {
 	static InputManager inputManager;
 	static EntityManager entityManager;
 	
+	static Board gameBoard;
+	
 	//temporary!
 	public static int frogX = 100;
 	public static int frogY = 100;
@@ -29,8 +31,9 @@ public class Main {
 		//create entity manager
 		entityManager = new EntityManager();
 		
-		Frog frog = new Frog(Sprites.frog, 100, 100);
-		entityManager.addEntity(frog);
+		//make a board
+		gameBoard = new Board(20, 40);
+		gameBoard.populateBoardEntities();
 		
 		//begin update loop
 		beginUpdateLoop();

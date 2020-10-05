@@ -11,12 +11,6 @@ public final class Sprites {
 
 	//list of all sprites
 	public static BufferedImage frog;
-<<<<<<< HEAD
-	public static BufferedImage dirtBlock;
-	public static BufferedImage toughDirtBlock;
-	public static BufferedImage treasureBlock;
-
-=======
 	
 	//characters
 	public static BufferedImage drill;
@@ -27,16 +21,12 @@ public final class Sprites {
 	public static BufferedImage toughDirt;
 	public static BufferedImage treasure;
 	
->>>>>>> aff18aa23f599ec61f5cd39b41618fcfc8b37f6d
 	public static void loadSprites() {
 		
 		
 		try {
 			//load sprite from file
 			frog = ImageIO.read(new File("res/frog.png"));
-			dirtBlock = ImageIO.read(new File("res/DirtBlock.png"));
-			toughDirtBlock = ImageIO.read(new File("res/toughDirtBlock.png"));
-			treasureBlock = ImageIO.read(new File("res/toughDirtBlock.png"));
 			
 			drill = ImageIO.read(new File("res/drill.png"));
 			

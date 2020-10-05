@@ -17,9 +17,7 @@ public class Block extends Entity{
 	public Block(int x, int y, BufferedImage sprite, int toughness) {
 		super(sprite, x, y, 32, 32);
 		this.toughness = toughness;
-		broken = false;
-		
-		
+		broken = false;		
     }
 			
 		
