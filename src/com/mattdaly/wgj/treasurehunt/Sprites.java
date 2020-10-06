@@ -12,6 +12,8 @@ public final class Sprites {
 	//list of all sprites
 	public static BufferedImage frog;
 	
+	public static BufferedImage pixel;
+	
 	//characters
 	public static BufferedImage drill;
 	
@@ -31,6 +33,8 @@ public final class Sprites {
 		try {
 			//load sprite from file
 			frog = ImageIO.read(new File("res/frog.png"));
+			
+			pixel = ImageIO.read(new File("res/pixel.png"));
 			
 			drill = ImageIO.read(new File("res/drill.png"));
 			
