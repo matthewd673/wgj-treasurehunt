@@ -18,6 +18,7 @@ public class EntityManager {
 		for(Entity e : entityList) {
 			e.update();
 		}
+		
 	}
 	
 }

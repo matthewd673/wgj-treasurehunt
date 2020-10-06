@@ -21,6 +21,7 @@ public class Drill extends Entity {
 	{
 		//make camera follow drill
 		Main.renderSurface.cam.lockToEntity(this);
+		y+=3;
 	}
 	
 }

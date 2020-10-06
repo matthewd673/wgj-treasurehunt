@@ -13,8 +13,8 @@ public class Main {
 	static RenderSurface renderSurface;
 	static InputManager inputManager;
 	static EntityManager entityManager;
-	
-	static Board gameBoard;
+	static BoardManager boardManager;
+	static Drill drill;
 	
 	//temporary!
 	public static int frogX = 100;
@@ -26,18 +26,17 @@ public class Main {
 		loadContent();
 		
 		//create frame
-		createFrame("Treasure Hunt", 800, 600);
+		createFrame("Treasure Hunt", 960, 600);
 		
 		//create entity manager
 		entityManager = new EntityManager();
 		
-		//make a board
-		gameBoard = new Board(20, 40);
-		gameBoard.generateBoard();
-		gameBoard.populateBoardEntities();
+		//create Board Manager
+		boardManager = new BoardManager();
+		
 		
 		//create a drill
-		Drill drill = new Drill(0, 0);
+		drill = new Drill(renderSurface.w/2, 0);
 		entityManager.addEntity(drill);
 		
 		//begin update loop
@@ -89,9 +88,10 @@ public class Main {
 	//called on every update
 	static void update()
 	{
-
+		boardManager.update(drill);
 		entityManager.update();
 		renderSurface.repaint(); //call render code
+		
 		
 	}
 	

@@ -22,11 +22,11 @@ public class Camera {
 	public void lockToEntity(Entity e)
 	{
 		//get center of entity
-		float centerX = e.x + (e.w / 2);
+		float centerX = e.x + (e.w / 2);//are we shifting in x?
 		float centerY = e.y + (e.h / 2);
 		
 		//set top left of screen accordingly
-		moveCam(centerX - (screenW / 2), centerY - (screenH / 2));
+		moveCam(0, centerY - (screenH / 3));
 	}
 	
 	public void moveCam(float newX, float newY)
