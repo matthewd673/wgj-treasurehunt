@@ -6,8 +6,10 @@ public class EntityManager {
 
 	ArrayList<Entity> entityList = new ArrayList<Entity>();
 	
+	ArrayList<Entity> addQueue = new ArrayList<Entity>();
+	
 	public void addEntity(Entity e) {
-		entityList.add(e);
+		addQueue.add(e);
 	}
 	
 	public void removeEntity(Entity e) {
@@ -18,6 +20,9 @@ public class EntityManager {
 		for(Entity e : entityList) {
 			e.update();
 		}
+		
+		entityList.addAll(addQueue);
+		addQueue.clear();
 	}
 	
 }

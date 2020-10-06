@@ -29,7 +29,6 @@ public class RenderSurface extends JComponent {
 	{	
 		
 		//begin draw calls
-		
 		for(Entity e : Main.entityManager.entityList) {
 			e.render(g);
 		}
