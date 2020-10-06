@@ -11,7 +11,6 @@ public class Board {
 	public int x,y;
 	public int w,h;
 	
-
 	Block[][] board;
 	
 	public Board(int h, int w, int y) {
@@ -68,11 +67,11 @@ public class Board {
 		        	board[i][j] = skyBlock;
 		        }
 				
-				x += DirtBlock.w;
+				x += 32;
 		    }
 			
 			x = 0;
-			yInc += DirtBlock.h;
+			yInc += 32;
 			
 		}
 		

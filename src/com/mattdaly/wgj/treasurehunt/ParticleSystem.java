@@ -26,11 +26,15 @@ public class ParticleSystem {
 			
 			Color col = new Color(sourceImg.getRGB(randX, randY));
 			
-			Particle p = new Particle(x, y, new Velocity(1, 1), 30, col);
+			float velX = 10 * (ThreadLocalRandom.current().nextFloat() - 0.5f);
+			float velY = 10 * (ThreadLocalRandom.current().nextFloat() - 0.5f);
+			
+			Particle p = new Particle(x, y, new Velocity(velX, velY), 12, col);
 			Main.entityManager.addEntity(p);
 		}
 	}
 	
+	/*
 	public void update() {
 		if(particles.size() < 1)
 			return;
@@ -45,5 +49,6 @@ public class ParticleSystem {
 			Main.renderSurface.drawRectangle(g, Main.renderSurface.cam.getRenderRect(new Rectangle((int)p.x, (int)p.y, 3, 3)), p.col);
 		}
 	}
+	*/
 	
 }

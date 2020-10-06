@@ -7,19 +7,23 @@ public class EntityManager {
 	ArrayList<Entity> entityList = new ArrayList<Entity>();
 	
 	ArrayList<Entity> addQueue = new ArrayList<Entity>();
+	ArrayList<Entity> removeQueue = new ArrayList<Entity>();
 	
 	public void addEntity(Entity e) {
 		addQueue.add(e);
 	}
 	
 	public void removeEntity(Entity e) {
-		entityList.remove(e);
+		removeQueue.add(e);
 	}
 	
 	public void update() {
 		for(Entity e : entityList) {
 			e.update();
 		}
+		
+		entityList.removeAll(removeQueue);
+		removeQueue.clear();
 		
 		entityList.addAll(addQueue);
 		addQueue.clear();

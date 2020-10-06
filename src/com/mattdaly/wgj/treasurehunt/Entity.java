@@ -10,8 +10,8 @@ public class Entity implements Comparable {
 	
 	public float x;
 	public float y;
-	public static int w;
-	public static int h;
+	public int w;
+	public int h;
 	
 	public String hash;
 	public int zIndex;
