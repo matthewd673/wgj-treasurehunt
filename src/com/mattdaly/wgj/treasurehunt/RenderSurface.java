@@ -54,8 +54,9 @@ public class RenderSurface extends JComponent {
 				);
 	}
 	
-	public static void drawRectangle(Graphics g, Rectangle rect, Color color) {
-		g.drawRect(rect.x, rect.y, rect.width, rect.height);
+	public static void fillRectangle(Graphics g, Rectangle rect, Color color) {
+		g.setColor(color);
+		g.fillRect(rect.x, rect.y, rect.width, rect.height);
 	}
 	
 }

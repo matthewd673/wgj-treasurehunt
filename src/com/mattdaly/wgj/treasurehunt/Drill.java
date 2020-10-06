@@ -18,6 +18,9 @@ public class Drill extends Entity {
 	public int blockX;
 	public int blockY;
 	
+	int minTimeBetweenBreaks = 30;
+	int timeBetweenBreaks = 0;
+	
 	public Drill(float x, float y)
 	{
 		super(Sprites.drill, x, y, 32, 32);
@@ -26,6 +29,15 @@ public class Drill extends Entity {
 	public void update()
 	{
 		
+		/*
+		 * This code is confusing
+		 * I wrote it at 1am
+		 * Basically just don't touch any of it
+		 * Or else it will probably break
+		 * I'm sorry
+		 * - Matt
+		 */
+		//find current drill block
 		blockX = (int)x / 32;
 		blockY = (int)y / 32;
 		
@@ -40,9 +52,15 @@ public class Drill extends Entity {
 		Board currentBoard = Main.boardManager.getCurrentBoard(boardHashX + "," + boardHashY);
 		Block currentBlock = currentBoard.board[innerBoardY][blockX];
 		
-		currentBlock.breakBlock();
+		if(!currentBlock.broken) {
+			currentBlock.spawnBlockParticles();
+			currentBlock.breakBlock();
+			timeBetweenBreaks = 0;
+		}
 		
-		//Main.boardManager.boards.get(0).board[blockY][blockX].breakBlock();
+		//increment time between block breaks
+		if(timeBetweenBreaks < minTimeBetweenBreaks)
+			timeBetweenBreaks++;
 		
 		acceptInput();
 		
@@ -53,17 +71,20 @@ public class Drill extends Entity {
 	public void acceptInput()
 	{
 		if(Main.inputManager.isKeyPressed('w'))
-			moveDrill(x, y - 5);
+			moveDrill(x, y - 32);
 		if(Main.inputManager.isKeyPressed('a'))
-			moveDrill(x - 5, y);
+			moveDrill(x - 32, y);
 		if(Main.inputManager.isKeyPressed('s'))
-			moveDrill(x, y + 5);
+			moveDrill(x, y + 32);
 		if(Main.inputManager.isKeyPressed('d'))
-			moveDrill(x + 5, y);
+			moveDrill(x + 32, y);
 	}
 	
 	public void moveDrill(float newX, float newY)
 	{
+		if(timeBetweenBreaks < minTimeBetweenBreaks)
+			return; //can't move yet
+		
 		x = newX;
 		y = newY;
 	}

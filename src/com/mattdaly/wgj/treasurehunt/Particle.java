@@ -1,6 +1,8 @@
 package com.mattdaly.wgj.treasurehunt;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Particle extends Entity {
 	
@@ -9,7 +11,7 @@ public class Particle extends Entity {
 	
 	public Particle(float x, float y, Velocity v, int lifespan, Color col) {
 
-		super(Sprites.pixel, x, y, 3, 3);
+		super(Sprites.pixel, x, y, 4, 4);
 		
 		this.v = v;
 		this.lifespan = lifespan;		
@@ -22,6 +24,16 @@ public class Particle extends Entity {
 			return;
 		else
 			lifespan--;
+		
+		if(lifespan <= 0)
+			Main.entityManager.removeEntity(this);
+		
+		super.update();
+	}
+	
+	public void render(Graphics g) {
+		Rectangle renderRect = Main.renderSurface.cam.getRenderRect(new Rectangle((int)x, (int)y, w, h));
+		RenderSurface.fillRectangle(g, renderRect, col);
 	}
 	
 }
