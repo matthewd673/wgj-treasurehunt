@@ -26,3 +26,5 @@ hs_err_pid*
 bin/com/mattdaly/wgj/treasurehunt/Entity.class
 *.class
 *.class
+*.class
+*.class

@@ -31,8 +31,6 @@ public class EntityManager {
 			e.update();
 		}
 		
-<<<<<<< HEAD
-=======
 		for(Entity e : addQueue) {
 			entityList.add(e);
 			System.out.println(e.x + " " + e.y);
@@ -80,8 +78,6 @@ public class EntityManager {
 		}
 		
 		return entities;
-		
->>>>>>> 5a1a81aa9eea7d0d088838086e6585d77c76a6c4
 	}
 	
 }
