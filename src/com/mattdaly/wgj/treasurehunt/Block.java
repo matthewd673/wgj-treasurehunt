@@ -39,6 +39,12 @@ public class Block extends Entity{
 	
 	public void breakBlock() {
 		broken = true;
+		
+		/*
+		ParticleSystem particleSystem = new ParticleSystem(x, y);
+		particleSystem.spawnParticles(12, sprite);
+		*/
+		
 		sprite = Sprites.background;
 	}
 	

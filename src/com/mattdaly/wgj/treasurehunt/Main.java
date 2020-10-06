@@ -85,7 +85,7 @@ public class Main {
 	//called on every update
 	static void update()
 	{
-		boardManager.update(drill);
+		//boardManager.update(drill);
 		entityManager.update();
 		renderSurface.repaint(); //call render code
 		

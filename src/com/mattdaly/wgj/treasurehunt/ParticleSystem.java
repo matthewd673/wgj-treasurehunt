@@ -7,12 +7,16 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class ParticleSystem extends Entity {
+public class ParticleSystem {
 
+	float x;
+	float y;
+	
 	ArrayList<Particle> particles = new ArrayList<Particle>();
 	
 	public ParticleSystem(float x, float y) {
-		super(Sprites.pixel, x, y, 1, 1);
+		this.x = x;
+		this.y = y;
 	}
 	
 	public void spawnParticles(int count, BufferedImage sourceImg) {
@@ -28,22 +32,18 @@ public class ParticleSystem extends Entity {
 	}
 	
 	public void update() {
-		/*
 		if(particles.size() < 1)
 			return;
 		
 		for(Particle p : particles) {
 			p.update();
 		}
-		*/
 	}
 	
 	public void render(Graphics g) {
-		/*
 		for(Particle p : particles) {
 			Main.renderSurface.drawRectangle(g, Main.renderSurface.cam.getRenderRect(new Rectangle((int)p.x, (int)p.y, 3, 3)), p.col);
 		}
-		*/
 	}
 	
 }

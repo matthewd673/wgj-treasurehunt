@@ -81,14 +81,7 @@ public class Board {
 	public void populateBoardEntities() {
 		for(int i = 0; i < w; i++) {
 			for(int j = 0; j < h; j++) {
-				Main.entityManager.addEntity(board[i][j]);
-				
-				/*
-				ParticleSystem particleSystem = new ParticleSystem(board[i][j].x, board[i][j].y);
-				particleSystem.spawnParticles(12, board[i][j].sprite);
-				Main.entityManager.addEntity(particleSystem);
-				*/
-				
+				Main.entityManager.addEntity(board[i][j]);				
 			}
 		}
 	}
