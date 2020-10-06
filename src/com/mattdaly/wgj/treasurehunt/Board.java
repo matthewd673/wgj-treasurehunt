@@ -28,9 +28,24 @@ public class Board {
 		
 		x = 0;
 		int yInc = y;
+		double chanceToStartAlive = 0.45;
+		/*
+		//generates random noise
+		for(int i = 0; i<w; i++){
+	        for(int j=0; j<h; j++){
+	            if(Math.random() < chanceToStartAlive){
+	                board[i][j].broken = false;
+	            }
+	        }
+	    }
+		
+		*/
 		
 		for(int i = 0; i < w; i++) {
 			for(int j = 0; j < h; j++) {
+				
+				
+				if(!board[i][j].broken) {
 				
 				//random tile generation (we can change later)
 				double rand  = Math.random();
@@ -55,8 +70,13 @@ public class Board {
 					board[i][j] = new TreasureBlock(x, yInc);
 				
 				//randomly break some blocks (these will always be normal dirt, based on the above generator)
-				if(rand < .08)
+				if(rand < .05)
 					board[i][j].MinusToughness();
+				
+				
+				
+				
+				
 				
 				//set air and surface blocks at set y levels
 				if(yInc == 32)
@@ -67,12 +87,16 @@ public class Board {
 		        	skyBlock.broken = true;
 		        	board[i][j] = skyBlock;
 		        }
+		        
+				}
 				
 				x += DirtBlock.w;
 		    }
 			
 			x = 0;
 			yInc += DirtBlock.h;
+		
+			
 			
 		}
 		
@@ -100,6 +124,16 @@ public class Board {
 			}
 		}
 	}
+	
+	
+		
+		
+		
+		
+		
+		
+		
+	
 		
 }
 	
