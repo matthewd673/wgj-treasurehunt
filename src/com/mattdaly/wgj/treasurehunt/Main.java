@@ -16,9 +16,6 @@ public class Main {
 	static BoardManager boardManager;
 	static Drill drill;
 	
-	//temporary!
-	public static int frogX = 100;
-	public static int frogY = 100;
 	
 	public static void main(String args[]) {
 		
