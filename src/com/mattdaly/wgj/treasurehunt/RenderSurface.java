@@ -30,12 +30,7 @@ public class RenderSurface extends JComponent {
 		
 		//begin draw calls
 		
-		ArrayList<Entity> renderList = Main.entityManager.getEntitiesInRange((int)cam.x, (int)cam.y, cam.screenW, cam.screenH);
-		//System.out.println(renderList.size());
-		
-		Collections.sort(renderList);
-		
-		for(Entity e : renderList) {
+		for(Entity e : Main.entityManager.entityList) {
 			e.render(g);
 		}
 		
