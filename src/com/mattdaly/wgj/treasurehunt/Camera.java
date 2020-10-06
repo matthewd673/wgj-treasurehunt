@@ -43,9 +43,12 @@ public class Camera {
 			y = minY;
 	}
 	
-	public Rectangle getRenderRect(Entity e)
-	{
+	public Rectangle getRenderRect(Entity e) {
 		return new Rectangle((int)(e.x - x), (int)(e.y - y), e.w, e.h);
+	}
+	
+	public Rectangle getRenderRect(Rectangle r) {
+		return new Rectangle((int)(r.x - x), (int)(r.y - y), r.width, r.height);
 	}
 	
 }

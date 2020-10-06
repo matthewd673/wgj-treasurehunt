@@ -4,14 +4,17 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-public class Entity {
-
+public class Entity implements Comparable {
+	
 	public BufferedImage sprite;
 	
 	public float x;
 	public float y;
 	public static int w;
 	public static int h;
+	
+	public String hash;
+	public int zIndex;
 	
 	public Velocity v;
 	public Acceleration a;
@@ -25,6 +28,8 @@ public class Entity {
 		
 		v = new Velocity(0, 0);
 		a = new Acceleration(0);
+		
+		updateHash();
 	}
 	
 	public void update() {
@@ -32,11 +37,24 @@ public class Entity {
 		
 		x += v.velX;
 		y += v.velY;
+		
+		updateHash();
 	}
 	
 	public void render(Graphics g) {
 		Rectangle renderRect = Main.renderSurface.cam.getRenderRect(this); //get renderrect from camera
 		RenderSurface.drawSprite(g, sprite, renderRect);
+	}
+	
+	public void updateHash()
+	{
+		hash = ((int)x / 256) + "," + ((int)y / 256);
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		Entity e = (Entity)o;
+		return this.zIndex - e.zIndex;
 	}
 	
 }

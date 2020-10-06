@@ -2,6 +2,8 @@ package com.mattdaly.wgj.treasurehunt;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -27,9 +29,15 @@ public class RenderSurface extends JComponent {
 	{	
 		
 		//begin draw calls
-		for(Entity e : Main.entityManager.entityList) {
+		
+		ArrayList<Entity> renderList = Main.entityManager.getEntitiesInRange((int)cam.x, (int)cam.y, cam.screenW, cam.screenH);
+		//System.out.println(renderList.size());
+		
+		Collections.sort(renderList);
+		
+		for(Entity e : renderList) {
 			e.render(g);
-		}	
+		}
 		
 		//call super paint (end of draw calls)
 		super.paint(g);
@@ -37,8 +45,7 @@ public class RenderSurface extends JComponent {
 	}
 	
 	//simplified draw call
-	public static void drawSprite(Graphics g, BufferedImage image, Rectangle rect)
-	{
+	public static void drawSprite(Graphics g, BufferedImage image, Rectangle rect) {
 		g.drawImage(
 				image,
 				rect.x,
@@ -51,6 +58,10 @@ public class RenderSurface extends JComponent {
 				image.getHeight(),
 				null
 				);
+	}
+	
+	public static void drawRectangle(Graphics g, Rectangle rect, Color color) {
+		g.drawRect(rect.x, rect.y, rect.width, rect.height);
 	}
 	
 }
