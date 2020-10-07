@@ -142,6 +142,7 @@ public class Drill extends Entity {
 		
 		Board currentBoard = Main.boardManager.getCurrentBoard(boardHashX + "," + boardHashY);
 		Block currentBlock = new Block(0, 0, Sprites.pixel, 0);
+		
 		if(innerBoardY + yDir <= 29)
 			currentBlock = currentBoard.board[innerBoardY + yDir][blockX + xDir];
 		else

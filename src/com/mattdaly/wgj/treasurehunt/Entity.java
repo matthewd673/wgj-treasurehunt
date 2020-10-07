@@ -53,11 +53,13 @@ public class Entity {
 		RenderSurface.drawSprite(g, sprite, renderRect);
 		
 		//COLLIDER VISUALIZER
+		/*
 		if(collider) {
 			g.setColor(Color.GREEN);
 			Rectangle colRect = Main.renderSurface.cam.getRenderRect(new Rectangle((int)x, (int)y, w, h));
 			g.drawRect(colRect.x, colRect.y, colRect.width, colRect.height);
 		}
+		*/
 		
 	}
 	
