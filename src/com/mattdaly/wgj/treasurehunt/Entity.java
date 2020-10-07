@@ -56,7 +56,8 @@ public class Entity {
 		/*
 		if(collider) {
 			g.setColor(Color.GREEN);
-			g.drawRect((int)x, (int)y, w, h);
+			Rectangle colRect = Main.renderSurface.cam.getRenderRect(new Rectangle((int)x, (int)y, w, h));
+			g.drawRect(colRect.x, colRect.y, colRect.width, colRect.height);
 		}
 		*/
 		

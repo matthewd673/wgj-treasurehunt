@@ -114,22 +114,33 @@ public class Board {
 		        if(yInc == 0)
 		        {
 		        	Block skyBlock = new Block(x, yInc, Sprites.sky, 0);
+<<<<<<< HEAD
 		        	skyBlock.broken = true;
+=======
+		        	skyBlock.breakBlock();
+>>>>>>> 61693f8167639450e2d504f24318e8aefe585e3e
 		        	board[i][j] = skyBlock;
 		        }
 
 		        
 				
 				
+<<<<<<< HEAD
 				x += DirtBlock.w;
 
+=======
+>>>>>>> 61693f8167639450e2d504f24318e8aefe585e3e
 				x += 32;
 				
 
 		    }
 			
 			x = 0;
+<<<<<<< HEAD
 			yInc += DirtBlock.h;
+=======
+			yInc += 32;
+>>>>>>> 61693f8167639450e2d504f24318e8aefe585e3e
 	}
 	
 		}
