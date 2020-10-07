@@ -28,6 +28,7 @@ public class Board {
 		
 		x = 0;
 		int yInc = y;
+<<<<<<< Updated upstream
 		double chanceToStartAlive = 0.45;
 		/*
 		//generates random noise
@@ -40,7 +41,34 @@ public class Board {
 	    }
 		
 		*/
+=======
+		boolean map[][] = new boolean[w][h];
+	
+		double chanceToStartAlive = 0.50;
+		int steps = 20;
+		//initialiseMap
+		 for(int i=0; i<w; i++){
+		        for(int j=0; j<h; j++){
+		        	map[i][j] = false;   
+		        	//board[i][j] = new BrokenBlock(x, yInc);
+		            if(Math.random() < chanceToStartAlive){
+		            	//board[i][j] = new DirtBlock(x, yInc);
+		            	map[i][j] = true;   
+		            }
+		        	
+		        }
+		      
+		 }
+		 
+>>>>>>> Stashed changes
 		
+		    //And now run the simulation for a set number of steps
+		    for(int  i=0; i<steps; i++){
+		        map = doSimulationStep(map);
+		    }
+		    
+		    
+		     
 		for(int i = 0; i < w; i++) {
 			for(int j = 0; j < h; j++) {
 				
@@ -50,12 +78,10 @@ public class Board {
 				//random tile generation (we can change later)
 				double rand  = Math.random();
 				
+				if(map[i][j]) {
+				
 				if(rand<.55) { //DIRT BLOCK
-					DirtBlock dirtBlock = new DirtBlock(x, yInc);
-					if(rand < .1) {
-						dirtBlock.breakBlock();
-					}
-					board[i][j] = dirtBlock;
+					board[i][j] = new DirtBlock(x, yInc);
 				}
 				else if(rand<.92) { //TOUGH DIRT BLOCK
 					board[i][j] = new ToughDirtBlock(x, yInc);
@@ -69,9 +95,21 @@ public class Board {
 				else //TREASURE BLOCK
 					board[i][j] = new TreasureBlock(x, yInc);
 				
+<<<<<<< Updated upstream
 				//randomly break some blocks (these will always be normal dirt, based on the above generator)
 				if(rand < .05)
 					board[i][j].MinusToughness();
+=======
+				
+			
+				
+			}
+			else {
+				//If there is no block, set that index to broken block
+				board[i][j] = new BrokenBlock(x, yInc);
+				board[i][j].broken = true;
+			}
+>>>>>>> Stashed changes
 				
 				
 				
@@ -87,10 +125,15 @@ public class Board {
 		        	skyBlock.broken = true;
 		        	board[i][j] = skyBlock;
 		        }
+<<<<<<< Updated upstream
 		        
 				}
 				
 				x += DirtBlock.w;
+=======
+				x += 32;
+				
+>>>>>>> Stashed changes
 		    }
 			
 			x = 0;
@@ -100,7 +143,67 @@ public class Board {
 			
 		}
 		
+		
 	}
+	
+	public int countAliveNeighbours(boolean[][] map, int x, int y){
+		
+	    int count = 0;
+	    for(int i=-1; i<2; i++){
+	        for(int j=-1; j<2; j++){
+	            int neighbourx = x+i;
+	            int neighboury = y+j;
+	            
+	            if(i == 0 && j == 0){
+	            	//Do nothing for center point
+	            }
+	            //If index is on border 
+	            else if(neighbourx < 0 || neighboury < 0 || neighbourx >= map.length || neighboury >= map[0].length){
+	                count = count + 1;
+	            }
+	            //Otherwise, a normal check of the neighbour
+	            else if(map[neighbourx][neighboury]){
+	                count = count + 1;
+	            }
+	        }
+	    }
+	    return count;
+	}
+	
+	
+	public boolean[][] doSimulationStep(boolean[][] oldMap){
+	    boolean[][] newMap = new boolean[w][h];
+	    
+	    //Change these to change caves
+	    int deathLimit = 5;
+	    int birthLimit = 3;
+	    //Loop over each row and column of the map
+	    for(int x=0; x<oldMap.length; x++){
+	        for(int y=0; y<oldMap[0].length; y++){
+	            int nbs = countAliveNeighbours(oldMap, x, y);
+	            //The new value is based on our simulation rules
+	            //First, if a cell is alive but has too few neighbours, kill it.
+	            if(oldMap[x][y]){
+	                if(nbs < deathLimit){
+	                    newMap[x][y] = false;
+	                }
+	                else{
+	                    newMap[x][y] = true;
+	                }
+	            } //Otherwise, if the cell is dead now, check if it has the right number of neighbours to be 'born'
+	            else{
+	                if(nbs > birthLimit){
+	                    newMap[x][y] = true;
+	                }
+	                else{
+	                    newMap[x][y] = false;
+	                }
+	            }
+	        }
+	    }
+	    return newMap;
+	}
+	
 		
 	public void populateBoardEntities() {
 		for(int i = 0; i < w; i++) {

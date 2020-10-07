@@ -20,7 +20,7 @@ public class Block extends Entity{
 	public Block(int x, int y, BufferedImage sprite, int toughness) {
 		super(sprite, x, y, 32, 32);
 		this.toughness = toughness;
-		broken = false;		
+		broken = true;		
     }
 			
 		
@@ -38,7 +38,17 @@ public class Block extends Entity{
 	}
 	
 	public void breakBlock() {
+<<<<<<< Updated upstream
 		broken = true;
+=======
+		broken = false;
+		
+		/*
+		ParticleSystem particleSystem = new ParticleSystem(x, y);
+		particleSystem.spawnParticles(12, sprite);
+		*/
+		
+>>>>>>> Stashed changes
 		sprite = Sprites.background;
 	}
 	
