@@ -64,6 +64,7 @@ public class Board {
 		        {
 		        	Block skyBlock = new Block(x, yInc, Sprites.sky, 0);
 		        	skyBlock.broken = true;
+		        	skyBlock.collider = false;
 		        	board[i][j] = skyBlock;
 		        }
 				

@@ -16,6 +16,8 @@ public class RenderSurface extends JComponent {
 	int w;
 	int h;
 	
+	Color backgroundColor = new Color(31, 36, 75);
+	
 	public RenderSurface(int w, int h)
 	{
 		this.w = w;
@@ -29,6 +31,9 @@ public class RenderSurface extends JComponent {
 	{	
 		
 		//begin draw calls
+		//draw clear color
+		fillRectangle(g, new Rectangle(0, 0, w, h), backgroundColor);
+		
 		for(Entity e : Main.entityManager.entityList) {
 			e.render(g);
 		}
