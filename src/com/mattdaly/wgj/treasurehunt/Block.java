@@ -39,6 +39,7 @@ public class Block extends Entity{
 	
 	public void breakBlock() {
 		broken = true;
+		collider = false;
 		
 		/*
 		ParticleSystem particleSystem = new ParticleSystem(x, y);
