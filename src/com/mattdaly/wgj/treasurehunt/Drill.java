@@ -84,7 +84,6 @@ public class Drill extends Entity {
 		//a.accelY = 0;
 		
 		moveDrill(x + v.velX, y + v.velY);
-		System.out.println(y);
 	}
 	
 	public void acceptInput()
@@ -142,9 +141,16 @@ public class Drill extends Entity {
 			Main.boardManager.createBoard(0, boardHashY + 1);
 		
 		Board currentBoard = Main.boardManager.getCurrentBoard(boardHashX + "," + boardHashY);
-		Block currentBlock = currentBoard.board[innerBoardY + yDir][blockX + xDir];
-		currentBlock.spawnBlockParticles();
-		currentBlock.breakBlock();
+		Block currentBlock = new Block(0, 0, Sprites.pixel, 0);
+		if(innerBoardY + yDir <= 29)
+			currentBlock = currentBoard.board[innerBoardY + yDir][blockX + xDir];
+		else
+			currentBlock = Main.boardManager.getCurrentBoard(boardHashX + "," + (boardHashY + 1)).board[0][blockX + xDir];
+		
+		if(!currentBlock.broken) {
+			currentBlock.spawnBlockParticles();
+			currentBlock.breakBlock();
+		}
 		
 	}
 	
@@ -164,8 +170,6 @@ public class Drill extends Entity {
 				break;
 				
 		}
-		
-		System.out.println(hitWall);
 		
 		return hitWall;
 	}

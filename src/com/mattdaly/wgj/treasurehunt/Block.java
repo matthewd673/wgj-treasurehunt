@@ -1,5 +1,6 @@
 package com.mattdaly.wgj.treasurehunt;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -54,6 +55,9 @@ public class Block extends Entity{
 		particleSystem.spawnParticles(12, sprite);
 	}
 	
-	
+	public void render(Graphics g) {
+		if(!broken)
+			super.render(g);
+	}
 
 }
