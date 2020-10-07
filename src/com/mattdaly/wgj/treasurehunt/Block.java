@@ -53,7 +53,6 @@ public class Block extends Entity{
 		sprite = Sprites.background;
 	}
 	public void spawnBlockParticles() {
-		System.out.println("aaaa");
 		ParticleSystem particleSystem = new ParticleSystem(x, y);
 		particleSystem.spawnParticles(12, sprite);
 	}

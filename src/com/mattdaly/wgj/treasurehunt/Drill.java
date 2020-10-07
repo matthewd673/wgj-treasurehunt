@@ -5,20 +5,13 @@ import java.awt.Rectangle;
 
 public class Drill extends Entity {
 
-	/*
-	 * Stub so we can reference the drill
-	 * while the drill controller is being
-	 * written.
-	 * 
-	 * SOME IDEAS:
-	 *  - drill heats up for every 1 toughness unit you mine away
-	 *  - hit water to fully cool your drill
-	 */
-	
 	int speed = 5;
 	
 	public int blockX;
 	public int blockY;
+	public int boardHashX;
+	public int boardHashY;
+	public int innerBoardY;
 	
 	int minTimeBetweenBreaks = 30;
 	int timeBetweenBreaks = 0;
@@ -31,42 +24,7 @@ public class Drill extends Entity {
 	
 	public void update()
 	{
-		/*
-		 * This code is confusing
-		 * I wrote it at 1am
-		 * Basically just don't touch any of it
-		 * Or else it will probably break
-		 * I'm sorry
-		 * - Matt
-		 */
-		
-		/*
-		//find current drill block
-		blockX = (int)x / 32;
-		blockY = (int)y / 32;
-		
-		int boardHashX = blockX / 30;
-		int boardHashY = blockY / 30;
-		
-		int innerBoardY = blockY - (boardHashY * 30);
-		
-		if(innerBoardY > 15 && !Main.boardManager.boardTable.containsKey("0," + (boardHashY + 1)))
-			Main.boardManager.createBoard(0, boardHashY + 1);
-		
-		Board currentBoard = Main.boardManager.getCurrentBoard(boardHashX + "," + boardHashY);
-		Block currentBlock = currentBoard.board[innerBoardY][blockX];
-		
-		if(!currentBlock.broken) {
-			currentBlock.spawnBlockParticles();
-			currentBlock.breakBlock();
-			timeBetweenBreaks = 0;
-		}
-		
-		//increment time between block breaks
-		if(timeBetweenBreaks < minTimeBetweenBreaks)
-			timeBetweenBreaks++;
-			*/
-		
+			
 		acceptInput();
 		
 		//System.out.println(a.accelY + " " + v.velY + " " + y);
@@ -80,10 +38,22 @@ public class Drill extends Entity {
 		if(v.velY > 4)
 			v.velY = 4;
 		
-		//a.accelX = 0;
-		//a.accelY = 0;
-		
+		//move drill according to velocity
 		moveDrill(x + v.velX, y + v.velY);
+		
+		//find current drill block
+		blockX = Math.round(x / 32);
+		blockY = Math.round(y / 32);
+		
+		boardHashX = Math.round(blockX / 30);
+		boardHashY = Math.round(blockY / 30);
+		
+		innerBoardY = Math.round(blockY - (boardHashY * 30));
+		
+		//create new board if too far through the current one 
+		if(innerBoardY > 15 && !Main.boardManager.boardTable.containsKey("0," + (boardHashY + 1)))
+			Main.boardManager.createBoard(0, boardHashY + 1);
+		
 	}
 	
 	public void acceptInput()
@@ -116,10 +86,6 @@ public class Drill extends Entity {
 	
 	public void moveDrill(float newX, float newY)
 	{
-		/*
-		if(timeBetweenBreaks < minTimeBetweenBreaks)
-			return; //can't move yet
-		*/
 		
 		if(!willCollide(newX, y, w, h))
 			x = newX;
@@ -128,18 +94,7 @@ public class Drill extends Entity {
 	}
 	
 	public void mineBlock(int xDir, int yDir) {
-		//find current drill block
-		blockX = Math.round(x / 32);
-		blockY = Math.round(y / 32);
-		
-		int boardHashX = Math.round(blockX / 30);
-		int boardHashY = Math.round(blockY / 30);
-		
-		int innerBoardY = Math.round(blockY - (boardHashY * 30));
-		
-		if(innerBoardY > 15 && !Main.boardManager.boardTable.containsKey("0," + (boardHashY + 1)))
-			Main.boardManager.createBoard(0, boardHashY + 1);
-		
+				
 		Board currentBoard = Main.boardManager.getCurrentBoard(boardHashX + "," + boardHashY);
 		Block currentBlock = new Block(0, 0, Sprites.pixel, 0);
 		
