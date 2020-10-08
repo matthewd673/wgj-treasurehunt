@@ -8,7 +8,7 @@ public class Drill extends Entity {
 	int speed = 4;
 
 	public int drillHeat = 0;
-	final int maxHeat = 55;
+	int maxHeat = 55;
 	
 	public int blockX;
 	public int blockY;
@@ -62,8 +62,13 @@ public class Drill extends Entity {
 		innerBoardY = Math.round(blockY - (boardHashY * 30));
 		
 		//create new board if too far through the current one 
-		if(innerBoardY > 15 && !Main.boardManager.boardTable.containsKey("0," + (boardHashY + 1)))
-			Main.boardManager.createBoard(0, boardHashY + 1);
+		if(innerBoardY > 15) {
+			if (!Main.boardManager.boardTable.containsKey("0," + (boardHashY + 1)))
+				Main.boardManager.createBoard(0, boardHashY + 1);
+
+			if (Main.boardManager.boardTable.containsKey("0," + (boardHashY - 1)))
+				Main.boardManager.getCurrentBoard("0," + (boardHashY - 1)).dePopulateBoardEntities();
+		}
 
 		//check current block
 		Block currentBlock = Main.boardManager.getCurrentBoard("0," + (boardHashY)).board[innerBoardY][blockX];

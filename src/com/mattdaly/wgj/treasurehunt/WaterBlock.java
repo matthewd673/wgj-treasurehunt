@@ -9,7 +9,7 @@ public class WaterBlock extends Block {
 	public void breakBlock(Drill breakingDrill) {
 
 		if(breakingDrill != null)
-			breakingDrill.subtractHeat(5);
+			breakingDrill.subtractHeat(breakingDrill.maxHeat / 10);
 
 		super.breakBlock(breakingDrill);
 	}
