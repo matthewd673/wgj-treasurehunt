@@ -22,9 +22,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+      - name: 'Setup Java'
       - uses: actions/setup-java@v1.4.3
         with:
           java-version: 14
           java-package: jdk
           
+      - name: 'Assemble JAR'
+        run: |
+          ./gradlew assemble
+      - name: 'Get JAR Version'
+        run: |
+          echo "::set-env name=VERSION::$(./gradlew properties -q | grep "version:" | awk '{print $2}')"
+      
+      - name: 'Publish JAR'
+        uses: actions/upload-artifact@v2-preview
+        with:
+          name: 'cicd-demo-${{env.VERSION}}-all.jar'
+          path: build/libs/*-all.jar
