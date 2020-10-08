@@ -95,11 +95,11 @@ public class Board {
 					board[i][j].sprite = Sprites.purpleTreasure;
 					board[i][j].type = "P";
 				}
-				else if(tRand<.93 && y>3000) {
+				else if(tRand<.94 && y>3000) {
 					board[i][j].sprite = Sprites.orangeTreasure;
 					board[i][j].type = "O";
 				}
-				else if(tRand<.93 && y>5000) {
+				else if(tRand<.99 && y>5000) {
 					board[i][j].sprite = Sprites.redTreasure;
 					board[i][j].type = "R";
 				}

@@ -123,6 +123,8 @@ public class Drill extends Entity {
 
 		if(!willCollide(x, newY, w, h))
 			y = newY;
+		
+		//System.out.println(y);
 	}
 	
 	public void mineBlock(int xDir, int yDir) {
