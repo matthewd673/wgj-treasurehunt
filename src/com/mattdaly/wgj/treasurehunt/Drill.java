@@ -6,6 +6,9 @@ import java.awt.Rectangle;
 public class Drill extends Entity {
 
 	int speed = 5;
+
+	public int drillHeat = 0;
+	final int maxHeat = 40;
 	
 	public int blockX;
 	public int blockY;
@@ -56,7 +59,11 @@ public class Drill extends Entity {
 		//create new board if too far through the current one 
 		if(innerBoardY > 15 && !Main.boardManager.boardTable.containsKey("0," + (boardHashY + 1)))
 			Main.boardManager.createBoard(0, boardHashY + 1);
-		
+
+		//check if dead
+		if(drillHeat > maxHeat)
+			Main.entityManager.removeEntity(this);
+
 	}
 	
 	public void acceptInput()
@@ -105,10 +112,10 @@ public class Drill extends Entity {
 			currentBlock = currentBoard.board[innerBoardY + yDir][blockX + xDir];
 		else
 			currentBlock = Main.boardManager.getCurrentBoard(boardHashX + "," + (boardHashY + 1)).board[0][blockX + xDir];
-		
+
 		if(!currentBlock.broken) {
 			currentBlock.spawnBlockParticles();
-			currentBlock.breakBlock();
+			currentBlock.breakBlock(this);
 		}
 		
 	}
@@ -143,6 +150,20 @@ public class Drill extends Entity {
 	public void render(Graphics g) {
 		Rectangle renderRect = Main.renderSurface.cam.getRenderRect(new Rectangle((int)x, (int)y, 32, 32));
 		Main.renderSurface.drawSprite(g, animationManager.getCurrentDrill(), renderRect);
+	}
+
+	public void addHeat(int heatAmount) {
+		drillHeat += heatAmount;
+	}
+
+	public void resetDrillHeat() {
+		drillHeat = 0;
+	}
+
+	public void subtractHeat(int heatAmount) {
+		drillHeat -= heatAmount;
+		if(drillHeat < 0)
+			drillHeat = 0;
 	}
 	
 }

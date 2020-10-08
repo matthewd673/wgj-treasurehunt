@@ -5,5 +5,13 @@ public class IceBlock extends Block {
 	public IceBlock(int x, int y) {
 		super(x, y, Sprites.ice, 1);
 	}
-	
+
+	public void breakBlock(Drill breakingDrill) {
+
+		if(breakingDrill != null)
+			breakingDrill.resetDrillHeat();
+
+		super.breakBlock(breakingDrill);
+	}
+
 }

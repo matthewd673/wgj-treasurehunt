@@ -10,6 +10,7 @@ public class Block extends Entity{
 	
 	
 	public boolean broken;
+	private int initialToughness;
 	private int toughness;
 	
 	//not sure why these were defined again for blocks:
@@ -19,6 +20,7 @@ public class Block extends Entity{
 	
 	public Block(int x, int y, BufferedImage sprite, int toughness) {
 		super(sprite, x, y, 32, 32);
+		this.initialToughness = toughness;
 		this.toughness = toughness;
 		//broken = true;
     }
@@ -34,23 +36,18 @@ public class Block extends Entity{
 		if(toughness<2)
 			sprite = Sprites.dirt;
 		if(toughness<1)
-			breakBlock();
+			breakBlock(null);
 	}
 	
-	public void breakBlock() {
+	public void breakBlock(Drill breakingDrill) {
 
 		broken = true;
 		collider = false;
 
-		//broken = false;
-		
-		/*
-		ParticleSystem particleSystem = new ParticleSystem(x, y);
-		particleSystem.spawnParticles(12, sprite);
-		*/
-		
-
 		sprite = Sprites.background;
+
+		if(breakingDrill != null)
+			breakingDrill.addHeat(initialToughness);
 	}
 	public void spawnBlockParticles() {
 		ParticleSystem particleSystem = new ParticleSystem(x, y);
