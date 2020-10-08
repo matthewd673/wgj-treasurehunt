@@ -46,6 +46,7 @@ public class Entity {
 		y += v.velY;
 		
 		updateHash();
+		//getCurrentLava()
 	}
 	
 	public void render(Graphics g) {

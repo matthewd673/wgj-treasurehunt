@@ -10,13 +10,25 @@ public class AnimationManager {
 	
 	public BufferedImage[] drill;
 	public BufferedImage[] lava;
+<<<<<<< HEAD
 	int count;
+=======
+	int lavaCount;
+	int lavaDelay;
+	int drillCount; 
+>>>>>>> 9a1d546ab24496bf7d8ca90dc439441dee628285
 	
 	
 	
 	public AnimationManager() {
 		
+<<<<<<< HEAD
 		count = -1;
+=======
+		drillCount = -1;
+		lavaCount = 0;
+		lavaDelay = 0;
+>>>>>>> 9a1d546ab24496bf7d8ca90dc439441dee628285
 		
 		//drill
 		drill = new BufferedImage[4];
@@ -54,15 +66,43 @@ public class AnimationManager {
 	
 	public BufferedImage getCurrentDrill() {
 		
+<<<<<<< HEAD
 		count++;
 		
 		if(count > 3)
 			count = 0;
 		return drill[count];
+=======
+		drillCount++;
+		
+		if(drillCount > 3)
+			drillCount = 0;
+		return drill[drillCount];
+>>>>>>> 9a1d546ab24496bf7d8ca90dc439441dee628285
 		
 		
 	}
 	
+<<<<<<< HEAD
+=======
+	public BufferedImage getCurrentLava() {
+		
+		lavaDelay++;
+		//makes lava move slower
+		if(lavaDelay % 25 == 0) {
+			lavaDelay = 0;
+			lavaCount++;
+		}
+		
+		if(lavaCount > 15)
+			lavaCount = 0;
+		return lava[lavaCount];
+		
+		
+	}
+	
+	
+>>>>>>> 9a1d546ab24496bf7d8ca90dc439441dee628285
 }
 
 

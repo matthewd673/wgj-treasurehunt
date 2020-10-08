@@ -6,9 +6,10 @@ public class TreasureBlock extends Block {
 		super(x, y, Sprites.treasure, 1);
 	}
 
-	public void breakBlock(Drill breakingDrill) {
+	public void breakBlock() {
 		Main.treasureCt++;
-		super.breakBlock(breakingDrill);
+		super.breakBlock();
+		System.out.println(Main.treasureCt);
 		spawnTreasureParticles();
 	}
 	
