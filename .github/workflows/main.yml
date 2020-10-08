@@ -24,3 +24,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 14
+          java-package: jdk
+          
