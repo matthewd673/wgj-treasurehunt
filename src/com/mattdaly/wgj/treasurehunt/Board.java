@@ -92,9 +92,26 @@ public class Board {
 					else
 						board[i][j] = new IceBlock(x, yInc);
 				}
-				else //TREASURE BLOCK
+				else { //TREASURE BLOCK
+					
+					
 					board[i][j] = new TreasureBlock(x, yInc);
+					
+				double tRand = Math.random();
+				if(tRand<.7)
+					board[i][j].sprite = Sprites.treasure;
+				else if(tRand<.8)
+					board[i][j].sprite = Sprites.blueTreasure;
+				else if(tRand<.85)
+					board[i][j].sprite = Sprites.purpleTreasure;
+				else if(tRand<.9)
+					board[i][j].sprite = Sprites.orangeTreasure;
+				else if(tRand<.95)
+					board[i][j].sprite = Sprites.redTreasure;
+					
 				
+		
+				}
 
 				//randomly break some blocks (these will always be normal dirt, based on the above generator)
 				

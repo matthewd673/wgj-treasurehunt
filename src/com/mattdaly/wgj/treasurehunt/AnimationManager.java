@@ -14,11 +14,12 @@ public class AnimationManager {
 
 	
 
-	int count;
+
 
 	int lavaCount;
 	int lavaDelay;
 	int drillCount; 
+	int drillDelay;
 
 
 
@@ -28,20 +29,11 @@ public class AnimationManager {
 	public AnimationManager() {
 
 
-		
 
-		drillCount = -1;
+		drillCount = 0;
+		drillDelay = 0;
 		lavaCount = 0;
 		lavaDelay = 0;
-
-
-		count = -1;
-
-
-		drillCount = -1;
-		lavaCount = 0;
-		lavaDelay = 0;
-
 
 
 
@@ -82,9 +74,11 @@ public class AnimationManager {
 
 	
 	public BufferedImage getCurrentDrill() {
-
-
+		drillDelay++;
+		if(drillDelay % 2 == 0) {
+			drillDelay = 0;
 		drillCount++;
+		}
 		
 		if(drillCount > 3)
 			drillCount = 0;
@@ -93,12 +87,6 @@ public class AnimationManager {
 		
 	}
 
-
-
-		
-		
-	
-	
 
 
 

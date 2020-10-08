@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 public final class Sprites {
 
 	//list of all sprites
-	public static BufferedImage frog;
+
 	
 	public static BufferedImage pixel;
 	
@@ -25,7 +25,13 @@ public final class Sprites {
 		public static BufferedImage caveBackground;
 		public static BufferedImage dirt;
 		public static BufferedImage toughDirt;
+		
 		public static BufferedImage treasure;
+		public static BufferedImage purpleTreasure;
+		public static BufferedImage blueTreasure;
+		public static BufferedImage redTreasure;
+		public static BufferedImage orangeTreasure;
+		
 		public static BufferedImage water;
 		public static BufferedImage ice;
 		public static BufferedImage surface;
@@ -91,7 +97,13 @@ public final class Sprites {
 				caveBackground = ImageIO.read(new File("res/caveBackground.png"));
 				dirt = ImageIO.read(new File("res/dirt.png"));
 				toughDirt = ImageIO.read(new File("res/tough-dirt.png"));
+				
 				treasure = ImageIO.read(new File("res/treasure.png"));
+				purpleTreasure = ImageIO.read(new File("res/treasurePurple.png"));
+				blueTreasure = ImageIO.read(new File("res/treasureBlue.png"));
+				orangeTreasure = ImageIO.read(new File("res/treasureOrange.png"));
+				redTreasure = ImageIO.read(new File("res/treasureRed.png"));
+				
 				water = ImageIO.read(new File("res/water.png"));
 				ice = ImageIO.read(new File("res/ice.png"));
 				surface = ImageIO.read(new File("res/surface.png"));
