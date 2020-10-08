@@ -11,17 +11,41 @@ public class AnimationManager {
 	public BufferedImage[] drill;
 	public BufferedImage[] lava;
 
+
+	
+
+	int count;
+
 	int lavaCount;
 	int lavaDelay;
-	int drillCount;
+	int drillCount; 
+
+
+
 	
 	
 	
 	public AnimationManager() {
 
+
+		
+
 		drillCount = -1;
 		lavaCount = 0;
 		lavaDelay = 0;
+
+
+		count = -1;
+
+
+		drillCount = -1;
+		lavaCount = 0;
+		lavaDelay = 0;
+
+
+
+
+
 		
 		//drill
 		drill = new BufferedImage[4];
@@ -59,13 +83,25 @@ public class AnimationManager {
 	
 	public BufferedImage getCurrentDrill() {
 
+
 		drillCount++;
 		
 		if(drillCount > 3)
 			drillCount = 0;
 		return drill[drillCount];
+
 		
 	}
+
+
+
+		
+		
+	
+	
+
+
+
 
 	public BufferedImage getCurrentLava() {
 		

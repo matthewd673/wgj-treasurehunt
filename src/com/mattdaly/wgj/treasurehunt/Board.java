@@ -144,7 +144,7 @@ public class Board {
 	}
 	
 		}
-	//}
+
 	
 	
 	public boolean placeLava(int i, int j, int length) {
