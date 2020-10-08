@@ -37,6 +37,28 @@ public class RenderSurface extends JComponent {
 		for(Entity e : Main.entityManager.entityList) {
 			e.render(g);
 		}
+
+		//ui drawing
+		//heat bar
+		if(Main.drill != null) {
+			int heat = Main.drill.drillHeat;
+			int maxHeat = Main.drill.maxHeat;
+
+			drawSprite(g, Sprites.heatbarBackground, new Rectangle(4, 4, maxHeat * 4, 16));
+			drawSprite(g, Sprites.heatbar, new Rectangle(4, 4, heat * 4, 16));
+		}
+
+		//gem bar
+		int gemX = 4;
+		int gemY = 24;
+		for(int i = 0; i < Main.treasureCt; i++) {
+			gemX += 8;
+			if(gemX > 80) {
+				gemX = 4;
+				gemY += 16;
+			}
+			drawSprite(g, Sprites.treasureUi, new Rectangle(gemX, gemY, 20, 20));
+		}
 		
 		//call super paint (end of draw calls)
 		super.paint(g);

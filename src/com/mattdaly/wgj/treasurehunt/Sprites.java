@@ -31,6 +31,11 @@ public final class Sprites {
 		public static BufferedImage surface;
 		public static BufferedImage sky;
 		public static BufferedImage treasureParticle;
+
+		//ui
+		public static BufferedImage heatbar;
+		public static BufferedImage heatbarBackground;
+		public static BufferedImage treasureUi;
 		
 		//lava
 		public static BufferedImage lava1;
@@ -91,6 +96,10 @@ public final class Sprites {
 				surface = ImageIO.read(new File("res/surface.png"));
 				sky = ImageIO.read(new File("res/sky.png"));
 				treasureParticle = ImageIO.read(new File("res/treasure-particle.png"));
+
+				heatbar = ImageIO.read(new File("res/heatbar.png"));
+				heatbarBackground = ImageIO.read(new File("res/heatbar-background.png"));
+				treasureUi = ImageIO.read(new File("res/treasure-ui.png"));
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
