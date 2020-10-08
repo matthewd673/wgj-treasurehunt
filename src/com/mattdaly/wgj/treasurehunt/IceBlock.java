@@ -10,7 +10,7 @@ public class IceBlock extends Block {
 
 		if(breakingDrill != null) {
 			breakingDrill.resetDrillHeat();
-			breakingDrill.maxHeat += 5;
+			breakingDrill.maxHeat += 1;
 		}
 
 		super.breakBlock(breakingDrill);
