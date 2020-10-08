@@ -13,9 +13,6 @@ public class Drill extends Entity {
 	public int boardHashY;
 	public int innerBoardY;
 	
-	int minTimeBetweenBreaks = 30;
-	int timeBetweenBreaks = 0;
-	
 	public Drill(float x, float y)
 	{
 		super(Sprites.drill, x, y, 32, 32);
@@ -96,7 +93,7 @@ public class Drill extends Entity {
 	public void mineBlock(int xDir, int yDir) {
 				
 		Board currentBoard = Main.boardManager.getCurrentBoard(boardHashX + "," + boardHashY);
-		Block currentBlock = new Block(0, 0, Sprites.pixel, 0);
+		Block currentBlock;
 		
 		if(innerBoardY + yDir <= 29)
 			currentBlock = currentBoard.board[innerBoardY + yDir][blockX + xDir];
