@@ -113,8 +113,12 @@ public class Drill extends Entity {
 	public void moveDrill(float newX, float newY)
 	{
 		
-		if(!willCollide(newX, y, w, h) && newX > 0 && newX < Main.renderSurface.w - 32)
+		if(!willCollide(newX, y, w, h) && newX >= 0 && newX <= Main.renderSurface.w - 32)
 			x = newX;
+		
+		
+		
+		
 		if(!willCollide(x, newY, w, h))
 			y = newY;
 	}
