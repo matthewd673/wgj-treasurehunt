@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 public class Drill extends Entity {
 
-	int speed = 5;
+	int speed = 4;
 
 	public int drillHeat = 0;
 	final int maxHeat = 40;
