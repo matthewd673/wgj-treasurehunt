@@ -26,6 +26,7 @@ public final class Sprites {
 	public static BufferedImage ice;
 	public static BufferedImage surface;
 	public static BufferedImage sky;
+	public static BufferedImage treasureParticle;
 	
 	public static void loadSprites() {
 		
@@ -46,6 +47,7 @@ public final class Sprites {
 			ice = ImageIO.read(new File("res/ice.png"));
 			surface = ImageIO.read(new File("res/surface.png"));
 			sky = ImageIO.read(new File("res/sky.png"));
+			treasureParticle = ImageIO.read(new File("res/treasure-particle.png"));
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

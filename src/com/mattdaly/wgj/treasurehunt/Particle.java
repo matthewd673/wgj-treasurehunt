@@ -12,6 +12,7 @@ public class Particle extends Entity {
 	public Particle(float x, float y, Velocity v, int lifespan, Color col) {
 
 		super(Sprites.pixel, x, y, 4, 4);
+		collider = false;
 		
 		this.v = v;
 		this.lifespan = lifespan;		
