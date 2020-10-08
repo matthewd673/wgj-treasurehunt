@@ -8,11 +8,17 @@ public class LavaBlock extends Block{
 	AnimationManager animationManager;
 
 	public LavaBlock(int x, int y) {
-		super(x, y, Sprites.lava1, 2);
+		super(x, y, Sprites.lava1, 0);
+		collider = false;
 		animationManager = new AnimationManager();
 	}
-	
-	
+
+	//can't be broken
+	public void breakBlock(Drill breakingDrill) {
+		breakingDrill.explode();
+		return;
+	}
+
 	public void render(Graphics g) {
 		sprite = animationManager.getCurrentLava();
 		Rectangle renderRect = Main.renderSurface.cam.getRenderRect(new Rectangle((int)x, (int)y, 32, 32));

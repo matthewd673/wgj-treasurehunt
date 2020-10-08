@@ -65,6 +65,12 @@ public class Drill extends Entity {
 		if(innerBoardY > 15 && !Main.boardManager.boardTable.containsKey("0," + (boardHashY + 1)))
 			Main.boardManager.createBoard(0, boardHashY + 1);
 
+		//check current block
+		Block currentBlock = Main.boardManager.getCurrentBoard("0," + (boardHashY)).board[innerBoardY][blockX];
+		//explode if current block is lava
+		if(currentBlock.getClass().getName().endsWith("LavaBlock"))
+			explode();
+
 		//check if dead
 		if(drillHeat > maxHeat)
 			explode();
@@ -84,10 +90,7 @@ public class Drill extends Entity {
 		
 		int blockMineX = 0;
 		int blockMineY = 1;
-		
-		if(Main.inputManager.isKeyPressed('w')) {
-			v.velY = -10;
-		}
+
 		if(Main.inputManager.isKeyPressed('a')) {
 			moveDrill(x - speed, y);
 			blockMineX = -1;
