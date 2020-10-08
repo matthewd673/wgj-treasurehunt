@@ -16,6 +16,8 @@ public class Main {
 	static BoardManager boardManager;
 	static Drill drill;
 	
+	public static int treasureCt = 0;
+	
 	
 	public static void main(String args[]) {
 		

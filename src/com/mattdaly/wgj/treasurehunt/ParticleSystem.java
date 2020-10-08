@@ -34,17 +34,6 @@ public class ParticleSystem {
 		}
 	}
 	
-<<<<<<< Updated upstream
-	/*
-	public void update() {
-		if(particles.size() < 1)
-			return;
-		
-		for(Particle p : particles) {
-			p.update();
-		}
-	}
-=======
 	public void spawnSpriteParticles(int count, BufferedImage pSprite, int w, int h) {
 		for(int i = 0; i < count; i++) {
 			float velX = 10 * (ThreadLocalRandom.current().nextFloat() - 0.5f);
@@ -55,7 +44,13 @@ public class ParticleSystem {
 		}
 	}
 	
->>>>>>> Stashed changes
-	
+	public void update() {
+		if(particles.size() < 1)
+			return;
+		
+		for(Particle p : particles) {
+			p.update();
+		}
+	}
 	
 }
