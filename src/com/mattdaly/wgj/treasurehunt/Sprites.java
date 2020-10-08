@@ -31,6 +31,7 @@ public final class Sprites {
 		public static BufferedImage surface;
 		public static BufferedImage sky;
 		public static BufferedImage treasureParticle;
+		public static BufferedImage fireParticle;
 
 		//ui
 		public static BufferedImage heatbar;
@@ -96,6 +97,7 @@ public final class Sprites {
 				surface = ImageIO.read(new File("res/surface.png"));
 				sky = ImageIO.read(new File("res/sky.png"));
 				treasureParticle = ImageIO.read(new File("res/treasure-particle.png"));
+				fireParticle = ImageIO.read(new File("res/fire.png"));
 
 				heatbar = ImageIO.read(new File("res/heatbar.png"));
 				heatbarBackground = ImageIO.read(new File("res/heatbar-background.png"));

@@ -62,8 +62,16 @@ public class Drill extends Entity {
 
 		//check if dead
 		if(drillHeat > maxHeat)
-			Main.entityManager.removeEntity(this);
+			explode();
 
+	}
+
+	public void explode() {
+		Main.entityManager.removeEntity(this);
+
+		//create explosion
+		ParticleSystem particles = new ParticleSystem(x, y);
+		particles.spawnSpriteParticles(32, Sprites.fireParticle, 12, 12);
 	}
 	
 	public void acceptInput()
