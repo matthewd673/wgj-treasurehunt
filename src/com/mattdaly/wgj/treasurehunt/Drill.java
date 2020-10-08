@@ -40,7 +40,7 @@ public class Drill extends Entity {
 		
 		v.velX += a.accelX;
 		v.velY += a.accelY;
-		
+
 		if(v.velY > 6)
 			v.velY = 6;
 
