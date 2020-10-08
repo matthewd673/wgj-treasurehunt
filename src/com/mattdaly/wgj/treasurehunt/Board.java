@@ -13,7 +13,7 @@ public class Board {
 	
 
 	Block[][] board;
-	
+	boolean[][] map;
 	public Board(int h, int w, int y) {
 		
 		this.w = w;
@@ -42,7 +42,7 @@ public class Board {
 		
 		*/
 
-		boolean map[][] = new boolean[w][h];
+		 map = new boolean[w][h];
 	
 		double chanceToStartAlive = 0.50;
 		int steps = 20;
@@ -103,9 +103,27 @@ public class Board {
 			}
 			else {
 				//If there is no block, set that index to broken block
-				board[i][j] = new BrokenBlock(x, yInc);
-				board[i][j].broken = true;
+				
+				//if((j-1>=0 && map[i][j-1]) && (i+1<30 && map[i+1][j])) {
+				//	board[i][j] = new LavaBlock(x, yInc);
+				//	map[i][j] = true;
+				//}
+				if(placeLava(i,j,2)) {
+					System.out.println("aaaa");
+					board[i][j] = new LavaBlock(x, yInc);
+					x+=32;
+					board[i][j+1] = new LavaBlock(x, yInc);
+					j++;
+					
+					
+					
+				}
+				else {
+					board[i][j] = new BrokenBlock(x, yInc);
+					board[i][j].broken = true;
+				}
 			}
+				
 
 				
 				//set air and surface blocks at set y levels
@@ -129,6 +147,22 @@ public class Board {
 		}
 	//}
 	
+	
+	public boolean placeLava(int i, int j, int length) {
+		
+		
+		if(length == 0 && (j+1<w && map[i][j+1]))
+			return true;
+		if((j-1>=0 && map[i][j-1]) && (i+1<w && map[i+1][j]) && (!map[i][j])) {
+			map[i][j] = true;
+			if(placeLava(i, j+1,length-1))
+				return true;
+		}
+	
+			return false;
+		
+		
+	}
 	public int countAliveNeighbours(boolean[][] map, int x, int y){
 		
 	    int count = 0;
@@ -140,7 +174,7 @@ public class Board {
 	            if(i == 0 && j == 0){
 	            	//Do nothing for center point
 	            }
-	            //If index is on border 
+	            //If index is on border
 	            else if(neighbourx < 0 || neighboury < 0 || neighbourx >= map.length || neighboury >= map[0].length){
 	                count = count + 1;
 	            }

@@ -34,6 +34,7 @@ public class ParticleSystem {
 		}
 	}
 	
+<<<<<<< Updated upstream
 	/*
 	public void update() {
 		if(particles.size() < 1)
@@ -43,12 +44,18 @@ public class ParticleSystem {
 			p.update();
 		}
 	}
-	
-	public void render(Graphics g) {
-		for(Particle p : particles) {
-			Main.renderSurface.drawRectangle(g, Main.renderSurface.cam.getRenderRect(new Rectangle((int)p.x, (int)p.y, 3, 3)), p.col);
+=======
+	public void spawnSpriteParticles(int count, BufferedImage pSprite, int w, int h) {
+		for(int i = 0; i < count; i++) {
+			float velX = 10 * (ThreadLocalRandom.current().nextFloat() - 0.5f);
+			float velY = 10 * (ThreadLocalRandom.current().nextFloat() - 0.5f);
+			
+			SpriteParticle p = new SpriteParticle(x, y, w, h, new Velocity(velX, velY), 12, pSprite);
+			Main.entityManager.addEntity(p);
 		}
 	}
-	*/
+	
+>>>>>>> Stashed changes
+	
 	
 }

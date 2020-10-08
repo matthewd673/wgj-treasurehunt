@@ -16,7 +16,7 @@ public class RenderSurface extends JComponent {
 	int w;
 	int h;
 	
-	Color backgroundColor = new Color(31, 36, 75);
+	Color backgroundColor = new Color(20, 24, 49);
 	
 	public RenderSurface(int w, int h)
 	{
@@ -41,7 +41,7 @@ public class RenderSurface extends JComponent {
 		//call super paint (end of draw calls)
 		super.paint(g);
 		
-	}
+	}	
 	
 	//simplified draw call
 	public static void drawSprite(Graphics g, BufferedImage image, Rectangle rect) {
