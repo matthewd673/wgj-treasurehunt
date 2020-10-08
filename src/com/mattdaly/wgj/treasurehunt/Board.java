@@ -108,18 +108,19 @@ public class Board {
 		
 				}
 
-				//randomly break some blocks (these will always be normal dirt, based on the above generator)
+				
 				
 		
-				
+				//lava generation 
 				if(j+3<w && i+1<h && map[i][j] && !map[i][j+1] && !map[i][j+2] && map[i][j+3]  && map[i+1][j+1] && map[i+1][j+2]) {
 					x+=32;
 					j++;
 					board[i][j] = new LavaBlock(x, yInc);
+					map[i][j] = true;
 					x+=32;
 					j++;
 					board[i][j] = new LavaBlock(x, yInc);
-					
+					map[i][j] = true;
 					
 				}
 				
@@ -127,13 +128,31 @@ public class Board {
 					x+=32;
 					j++;
 					board[i][j] = new LavaBlock(x, yInc);
+					map[i][j] = true;
+					
 				}
+				
+				
+				
+				
+				
 			}
-		
-			
 				else {
+					
+					
+					//vine generation 
+					if( rand > .60 && i-1 >=0 && map[i-1][j]) {
+						//board[i][j].broken = false;
+						board[i][j] = new VineBlock(x, yInc);
+						map[i][j] = true;
+						
+						
+						
+					}
+					else {
 					board[i][j] = new BrokenBlock(x, yInc);
 					board[i][j].broken = true;
+					}
 				}
 			
 				
@@ -224,12 +243,7 @@ public class Board {
 		for(int i = 0; i < w; i++) {
 			for(int j = 0; j < h; j++) {
 				Main.entityManager.addEntity(board[i][j]);
-				
-				/*
-				ParticleSystem particleSystem = new ParticleSystem(board[i][j].x, board[i][j].y);
-				particleSystem.spawnParticles(12, board[i][j].sprite);
-				Main.entityManager.addEntity(particleSystem);
-				*/		
+			
 			}
 		}
 	}

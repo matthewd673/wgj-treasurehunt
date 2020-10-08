@@ -8,7 +8,7 @@ public class Drill extends Entity {
 	int speed = 4;
 
 	public int drillHeat = 0;
-	final int maxHeat = 60;
+	final int maxHeat = 55;
 	
 	public int blockX;
 	public int blockY;
@@ -115,10 +115,7 @@ public class Drill extends Entity {
 		
 		if(!willCollide(newX, y, w, h) && newX >= 0 && newX <= Main.renderSurface.w - 32)
 			x = newX;
-		
-		
-		
-		
+
 		if(!willCollide(x, newY, w, h))
 			y = newY;
 	}
@@ -173,6 +170,7 @@ public class Drill extends Entity {
 	public void render(Graphics g) {
 		Rectangle renderRect = Main.renderSurface.cam.getRenderRect(new Rectangle((int)x, (int)y, 32, 32));
 		Main.renderSurface.drawSprite(g, animationManager.getCurrentDrill(), renderRect);
+		
 	}
 
 	public void addHeat(int heatAmount) {

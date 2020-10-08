@@ -13,7 +13,14 @@ public class TreasureBlock extends Block {
 	}
 
 	public void breakBlock(Drill breakingDrill) {
-		Main.treasureCt++;
+		if(type == "G" || type == "N")
+			Main.treasureCt++;
+		else if((type.equals("P")))
+			Main.treasureCt+=2;
+		else if((type.equals("O")))
+			Main.treasureCt+=3;
+		else if((type.equals("R")))
+			Main.treasureCt+=4;
 		super.breakBlock(breakingDrill);
 		
 		

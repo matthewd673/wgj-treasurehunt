@@ -40,6 +40,8 @@ public final class Sprites {
 		public static BufferedImage treasureOrangeParticle;
 		public static BufferedImage treasureRedParticle;
 		public static BufferedImage fireParticle;
+		public static BufferedImage vine;
+		
 
 		//ui
 		public static BufferedImage heatbar;
@@ -99,6 +101,8 @@ public final class Sprites {
 				caveBackground = ImageIO.read(new File("res/caveBackground.png"));
 				dirt = ImageIO.read(new File("res/dirt.png"));
 				toughDirt = ImageIO.read(new File("res/tough-dirt.png"));
+				
+				vine = ImageIO.read(new File("res/vine.png"));
 				
 				treasure = ImageIO.read(new File("res/treasure.png"));
 				purpleTreasure = ImageIO.read(new File("res/treasurePurple.png"));

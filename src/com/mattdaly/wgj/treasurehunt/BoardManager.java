@@ -1,10 +1,11 @@
 package com.mattdaly.wgj.treasurehunt;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Hashtable;
 
 public class BoardManager {
 
-	static ArrayList<Board> boards = new ArrayList<Board>();
+	//static ArrayList<Board> boards = new ArrayList<Board>();
 	
 	static Hashtable<String, Board> boardTable = new Hashtable<String, Board>();
 	
@@ -17,7 +18,9 @@ public class BoardManager {
 		board.generateBoard();
 		board.populateBoardEntities();
 		boardTable.put(x + "," + y, board);
+		
 	}
+	
 	
 	public Board getCurrentBoard(String hash) {
 		return boardTable.get(hash);
