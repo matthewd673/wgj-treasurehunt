@@ -6,8 +6,8 @@ public class EntityManager {
 
 	ArrayList<Entity> entityList = new ArrayList<Entity>();
 	
-	ArrayList<Entity> addQueue = new ArrayList<Entity>();
-	ArrayList<Entity> removeQueue = new ArrayList<Entity>();
+	private ArrayList<Entity> addQueue = new ArrayList<Entity>();
+	private ArrayList<Entity> removeQueue = new ArrayList<Entity>();
 	
 	public void addEntity(Entity e) {
 		addQueue.add(e);
