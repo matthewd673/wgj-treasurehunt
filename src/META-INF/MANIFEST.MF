@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: com.mattdaly.wgj.treasurehunt.Main
-Class-Path: com.mattdaly.wgj.treasurehunt.Main
-

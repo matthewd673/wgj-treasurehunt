@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="wgj-treasurehunt:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/wgj_treasurehunt_jar</output-path>
-    <root id="archive" name="wgj-treasurehunt.jar">
-      <element id="module-output" name="wgj-treasurehunt" />
-    </root>
-  </artifact>
-</component>
