@@ -28,7 +28,6 @@ public final class Sprites {
 		
 		public static BufferedImage treasure;
 		public static BufferedImage purpleTreasure;
-		public static BufferedImage blueTreasure;
 		public static BufferedImage redTreasure;
 		public static BufferedImage orangeTreasure;
 		
@@ -37,6 +36,9 @@ public final class Sprites {
 		public static BufferedImage surface;
 		public static BufferedImage sky;
 		public static BufferedImage treasureParticle;
+		public static BufferedImage treasurePurpleParticle;
+		public static BufferedImage treasureOrangeParticle;
+		public static BufferedImage treasureRedParticle;
 		public static BufferedImage fireParticle;
 
 		//ui
@@ -100,7 +102,7 @@ public final class Sprites {
 				
 				treasure = ImageIO.read(new File("res/treasure.png"));
 				purpleTreasure = ImageIO.read(new File("res/treasurePurple.png"));
-				blueTreasure = ImageIO.read(new File("res/treasureBlue.png"));
+				
 				orangeTreasure = ImageIO.read(new File("res/treasureOrange.png"));
 				redTreasure = ImageIO.read(new File("res/treasureRed.png"));
 				
@@ -108,7 +110,12 @@ public final class Sprites {
 				ice = ImageIO.read(new File("res/ice.png"));
 				surface = ImageIO.read(new File("res/surface.png"));
 				sky = ImageIO.read(new File("res/sky.png"));
+				
 				treasureParticle = ImageIO.read(new File("res/treasure-particle.png"));
+				treasurePurpleParticle = ImageIO.read(new File("res/treasurePurple-particle.png"));
+				treasureOrangeParticle = ImageIO.read(new File("res/treasureOrange-particle.png"));
+				treasureRedParticle = ImageIO.read(new File("res/treasureRed-particle.png"));
+				
 				fireParticle = ImageIO.read(new File("res/fire.png"));
 
 				heatbar = ImageIO.read(new File("res/heatbar.png"));

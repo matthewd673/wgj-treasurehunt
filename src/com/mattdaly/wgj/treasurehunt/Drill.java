@@ -8,7 +8,7 @@ public class Drill extends Entity {
 	int speed = 4;
 
 	public int drillHeat = 0;
-	final int maxHeat = 40;
+	final int maxHeat = 60;
 	
 	public int blockX;
 	public int blockY;

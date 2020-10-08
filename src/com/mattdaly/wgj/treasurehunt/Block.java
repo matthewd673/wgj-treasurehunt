@@ -12,6 +12,7 @@ public class Block extends Entity{
 	public boolean broken;
 	private int initialToughness;
 	private int toughness;
+	public String type;
 	
 	//not sure why these were defined again for blocks:
 	//seems to work without them...
@@ -22,6 +23,7 @@ public class Block extends Entity{
 		super(sprite, x, y, 32, 32);
 		this.initialToughness = toughness;
 		this.toughness = toughness;
+		type = "N";
 		//broken = true;
     }
 			

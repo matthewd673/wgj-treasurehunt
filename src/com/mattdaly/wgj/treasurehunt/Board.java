@@ -98,16 +98,22 @@ public class Board {
 					board[i][j] = new TreasureBlock(x, yInc);
 					
 				double tRand = Math.random();
-				if(tRand<.7)
+				if(tRand<.75) {
 					board[i][j].sprite = Sprites.treasure;
-				else if(tRand<.8)
-					board[i][j].sprite = Sprites.blueTreasure;
-				else if(tRand<.85)
+					board[i][j].type = "G";
+				}
+				else if(tRand<.9 && y>1200) {
 					board[i][j].sprite = Sprites.purpleTreasure;
-				else if(tRand<.9)
+					board[i][j].type = "P";
+				}
+				else if(tRand<.95 && y>3000) {
 					board[i][j].sprite = Sprites.orangeTreasure;
-				else if(tRand<.95)
+					board[i][j].type = "O";
+				}
+				else if(tRand<.95 && y>5000) {
 					board[i][j].sprite = Sprites.redTreasure;
+					board[i][j].type = "R";
+				}
 					
 				
 		
