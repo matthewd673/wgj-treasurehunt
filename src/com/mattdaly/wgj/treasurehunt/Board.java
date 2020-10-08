@@ -97,32 +97,33 @@ public class Board {
 				
 
 				//randomly break some blocks (these will always be normal dirt, based on the above generator)
-				if(rand < .05)
-					board[i][j].MinusToughness();
-		
-			}
-			else {
-				//If there is no block, set that index to broken block
 				
-				//if((j-1>=0 && map[i][j-1]) && (i+1<30 && map[i+1][j])) {
-				//	board[i][j] = new LavaBlock(x, yInc);
-				//	map[i][j] = true;
-				//}
-				if(placeLava(i,j,2)) {
-					System.out.println("aaaa");
+		
+				
+				if(j+3<w && i+1<h && map[i][j] && !map[i][j+1] && !map[i][j+2] && map[i][j+3]  && map[i+1][j+1] && map[i+1][j+2]) {
+					x+=32;
+					j++;
 					board[i][j] = new LavaBlock(x, yInc);
 					x+=32;
-					board[i][j+1] = new LavaBlock(x, yInc);
 					j++;
-					
+					board[i][j] = new LavaBlock(x, yInc);
 					
 					
 				}
+				
+				if(rand>.85 && j+2 <w && i+1<h && map[i][j] && !map[i][j+1] && map[i][j+2] && map[i+1][j+1]) {
+					x+=32;
+					j++;
+					board[i][j] = new LavaBlock(x, yInc);
+				}
+			}
+		
+			
 				else {
 					board[i][j] = new BrokenBlock(x, yInc);
 					board[i][j].broken = true;
 				}
-			}
+			
 				
 
 				
@@ -147,21 +148,7 @@ public class Board {
 
 	
 	
-	public boolean placeLava(int i, int j, int length) {
-		
-		
-		if(length == 0 && (j+1<w && map[i][j+1]))
-			return true;
-		if((j-1>=0 && map[i][j-1]) && (i+1<w && map[i+1][j]) && (!map[i][j])) {
-			map[i][j] = true;
-			if(placeLava(i, j+1,length-1))
-				return true;
-		}
-	
-			return false;
-		
-		
-	}
+
 	public int countAliveNeighbours(boolean[][] map, int x, int y){
 		
 	    int count = 0;
