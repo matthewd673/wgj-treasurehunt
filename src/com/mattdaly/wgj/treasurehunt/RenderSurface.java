@@ -52,12 +52,17 @@ public class RenderSurface extends JComponent {
 		int gemX = 4;
 		int gemY = 24;
 		for(int i = 0; i < Main.treasureCt; i++) {
-			gemX += 8;
+			
 			if(gemX > 80) {
 				gemX = 4;
 				gemY += 16;
 			}
+			
+			
 			drawSprite(g, Sprites.treasureUi, new Rectangle(gemX, gemY, 20, 20));
+			
+			
+			gemX += 8; 
 		}
 		
 		//call super paint (end of draw calls)

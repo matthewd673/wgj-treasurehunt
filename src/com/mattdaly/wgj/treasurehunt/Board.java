@@ -30,22 +30,11 @@ public class Board {
 		int yInc = y;
 
 		
-		/*
-		//generates random noise
-		for(int i = 0; i<w; i++){
-	        for(int j=0; j<h; j++){
-	            if(Math.random() < chanceToStartAlive){
-	                board[i][j].broken = false;
-	            }
-	        }
-	    }
-		
-		*/
 
 		 map = new boolean[w][h];
 	
-		double chanceToStartAlive = 0.50;
-		int steps = 20;
+		double chanceToStartAlive = 0.5;
+		int steps = 40;
 		//initialiseMap
 		 for(int i=0; i<w; i++){
 		        for(int j=0; j<h; j++){
@@ -151,9 +140,9 @@ public class Board {
 
 				
 				//set air and surface blocks at set y levels
-				if(yInc == 32)
+				if(yInc == 64)
 					board[i][j] = new SurfaceBlock(x, yInc);
-		        if(yInc == 0)
+		        if(yInc < 64)
 		        {
 		        	Block skyBlock = new Block(x, yInc, Sprites.sky, 0);
 		        	skyBlock.breakBlock(null);
