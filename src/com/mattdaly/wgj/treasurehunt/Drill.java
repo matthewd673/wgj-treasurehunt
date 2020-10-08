@@ -13,10 +13,16 @@ public class Drill extends Entity {
 	public int boardHashY;
 	public int innerBoardY;
 	
+	//feeds different drill images to sprite image
+		public AnimationManager animationManager;
+
+	
 	public Drill(float x, float y)
 	{
-		super(Sprites.drill, x, y, 32, 32);
+		super(Sprites.drill1, x, y, 32, 32);
 		a = new Acceleration(0, 4.9f);
+		
+		animationManager = new AnimationManager();
 	}
 	
 	public void update()
@@ -136,7 +142,7 @@ public class Drill extends Entity {
 	
 	public void render(Graphics g) {
 		Rectangle renderRect = Main.renderSurface.cam.getRenderRect(new Rectangle((int)x, (int)y, 32, 32));
-		Main.renderSurface.drawSprite(g, Sprites.drill, renderRect);
+		Main.renderSurface.drawSprite(g, animationManager.getCurrentDrill(), renderRect);
 	}
 	
 }
