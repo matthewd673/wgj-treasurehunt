@@ -41,9 +41,14 @@ public class Drill extends Entity {
 		v.velX += a.accelX;
 		v.velY += a.accelY;
 		
-		if(v.velY > 4)
-			v.velY = 4;
-		
+		if(v.velY > 6)
+			v.velY = 6;
+
+		if(a.accelY > 0)
+			a.accelY--;
+		if(a.accelY < 0)
+			a.accelY = 0;
+
 		//move drill according to velocity
 		moveDrill(x + v.velX, y + v.velY);
 		
@@ -105,7 +110,7 @@ public class Drill extends Entity {
 	public void moveDrill(float newX, float newY)
 	{
 		
-		if(!willCollide(newX, y, w, h))
+		if(!willCollide(newX, y, w, h) && newX > 0 && newX < Main.renderSurface.w - 32)
 			x = newX;
 		if(!willCollide(x, newY, w, h))
 			y = newY;
@@ -115,7 +120,10 @@ public class Drill extends Entity {
 				
 		Board currentBoard = Main.boardManager.getCurrentBoard(boardHashX + "," + boardHashY);
 		Block currentBlock;
-		
+
+		if(blockX + xDir < 0 || blockX + xDir > 29)
+			return;
+
 		if(innerBoardY + yDir <= 29)
 			currentBlock = currentBoard.board[innerBoardY + yDir][blockX + xDir];
 		else
