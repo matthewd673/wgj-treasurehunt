@@ -25,7 +25,7 @@ public class Main {
 		loadContent();
 		
 		//create frame
-		createFrame("Treasure Hunt", 960, 600);
+		createFrame("Gem Hunt", 960, 600);
 		
 		//create entity manager
 		entityManager = new EntityManager();
