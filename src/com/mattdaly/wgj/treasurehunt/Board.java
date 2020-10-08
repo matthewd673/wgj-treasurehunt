@@ -132,11 +132,10 @@ public class Board {
 		        if(yInc == 0)
 		        {
 		        	Block skyBlock = new Block(x, yInc, Sprites.sky, 0);
-		        	skyBlock.breakBlock();
+		        	skyBlock.breakBlock(null);
 		        	board[i][j] = skyBlock;
 		        }
 				x += 32;
-				
 
 		    }
 			

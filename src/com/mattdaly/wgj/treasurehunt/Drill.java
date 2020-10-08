@@ -6,6 +6,9 @@ import java.awt.Rectangle;
 public class Drill extends Entity {
 
 	int speed = 5;
+
+	public int drillHeat = 0;
+	final int maxHeat = 40;
 	
 	public int blockX;
 	public int blockY;
@@ -13,13 +16,16 @@ public class Drill extends Entity {
 	public int boardHashY;
 	public int innerBoardY;
 	
-	int minTimeBetweenBreaks = 30;
-	int timeBetweenBreaks = 0;
+	//feeds different drill images to sprite image
+		public AnimationManager animationManager;
+
 	
 	public Drill(float x, float y)
 	{
-		super(Sprites.drill, x, y, 32, 32);
+		super(Sprites.drill1, x, y, 32, 32);
 		a = new Acceleration(0, 4.9f);
+		
+		animationManager = new AnimationManager();
 	}
 	
 	public void update()
@@ -34,10 +40,15 @@ public class Drill extends Entity {
 		
 		v.velX += a.accelX;
 		v.velY += a.accelY;
-		
-		if(v.velY > 4)
-			v.velY = 4;
-		
+
+		if(v.velY > 6)
+			v.velY = 6;
+
+		if(a.accelY > 0)
+			a.accelY--;
+		if(a.accelY < 0)
+			a.accelY = 0;
+
 		//move drill according to velocity
 		moveDrill(x + v.velX, y + v.velY);
 		
@@ -53,7 +64,19 @@ public class Drill extends Entity {
 		//create new board if too far through the current one 
 		if(innerBoardY > 15 && !Main.boardManager.boardTable.containsKey("0," + (boardHashY + 1)))
 			Main.boardManager.createBoard(0, boardHashY + 1);
-		
+
+		//check if dead
+		if(drillHeat > maxHeat)
+			explode();
+
+	}
+
+	public void explode() {
+		Main.entityManager.removeEntity(this);
+
+		//create explosion
+		ParticleSystem particles = new ParticleSystem(x, y);
+		particles.spawnSpriteParticles(32, Sprites.fireParticle, 12, 12);
 	}
 	
 	public void acceptInput()
@@ -87,7 +110,7 @@ public class Drill extends Entity {
 	public void moveDrill(float newX, float newY)
 	{
 		
-		if(!willCollide(newX, y, w, h))
+		if(!willCollide(newX, y, w, h) && newX > 0 && newX < Main.renderSurface.w - 32)
 			x = newX;
 		if(!willCollide(x, newY, w, h))
 			y = newY;
@@ -96,16 +119,19 @@ public class Drill extends Entity {
 	public void mineBlock(int xDir, int yDir) {
 				
 		Board currentBoard = Main.boardManager.getCurrentBoard(boardHashX + "," + boardHashY);
-		Block currentBlock = new Block(0, 0, Sprites.pixel, 0);
-		
+		Block currentBlock;
+
+		if(blockX + xDir < 0 || blockX + xDir > 29)
+			return;
+
 		if(innerBoardY + yDir <= 29)
 			currentBlock = currentBoard.board[innerBoardY + yDir][blockX + xDir];
 		else
 			currentBlock = Main.boardManager.getCurrentBoard(boardHashX + "," + (boardHashY + 1)).board[0][blockX + xDir];
-		
+
 		if(!currentBlock.broken) {
 			currentBlock.spawnBlockParticles();
-			currentBlock.breakBlock();
+			currentBlock.breakBlock(this);
 		}
 		
 	}
@@ -139,7 +165,21 @@ public class Drill extends Entity {
 	
 	public void render(Graphics g) {
 		Rectangle renderRect = Main.renderSurface.cam.getRenderRect(new Rectangle((int)x, (int)y, 32, 32));
-		Main.renderSurface.drawSprite(g, Sprites.drill, renderRect);
+		Main.renderSurface.drawSprite(g, animationManager.getCurrentDrill(), renderRect);
+	}
+
+	public void addHeat(int heatAmount) {
+		drillHeat += heatAmount;
+	}
+
+	public void resetDrillHeat() {
+		drillHeat = 0;
+	}
+
+	public void subtractHeat(int heatAmount) {
+		drillHeat -= heatAmount;
+		if(drillHeat < 0)
+			drillHeat = 0;
 	}
 	
 }

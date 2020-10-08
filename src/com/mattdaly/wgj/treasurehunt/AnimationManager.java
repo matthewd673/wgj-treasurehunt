@@ -10,37 +10,14 @@ public class AnimationManager {
 	
 	public BufferedImage[] drill;
 	public BufferedImage[] lava;
-<<<<<<< Updated upstream
 	int lavaCount;
 	int lavaDelay;
 	int drillCount; 
-=======
-
 	int count;
-
-	int lavaCount;
-	int lavaDelay;
-	int drillCount; 
-
->>>>>>> Stashed changes
 	
 	
 	
 	public AnimationManager() {
-		
-<<<<<<< Updated upstream
-		drillCount = -1;
-		lavaCount = 0;
-		lavaDelay = 0;
-=======
-
-		count = -1;
-
-		drillCount = -1;
-		lavaCount = 0;
-		lavaDelay = 0;
-
->>>>>>> Stashed changes
 		
 		//drill
 		drill = new BufferedImage[4];
@@ -78,28 +55,20 @@ public class AnimationManager {
 	
 	public BufferedImage getCurrentDrill() {
 		
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
+		count++;
+		
+		if(count > 3)
+			count = 0;
+		return drill[count];
+    
 		drillCount++;
 		
 		if(drillCount > 3)
 			drillCount = 0;
-		return drill[drillCount];
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-		
+		return drill[drillCount];		
 		
 	}
-	
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
+  
 	public BufferedImage getCurrentLava() {
 		
 		lavaDelay++;
@@ -116,11 +85,6 @@ public class AnimationManager {
 		
 	}
 	
-	
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }
 
 
