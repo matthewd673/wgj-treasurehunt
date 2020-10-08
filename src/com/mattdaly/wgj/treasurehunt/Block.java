@@ -41,6 +41,7 @@ public class Block extends Entity{
 	
 	public void breakBlock(Drill breakingDrill) {
 
+		
 		broken = true;
 		collider = false;
 

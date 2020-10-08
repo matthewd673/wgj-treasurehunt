@@ -44,7 +44,6 @@ public class ParticleSystem {
 		}
 	}
 	
-	/*
 	public void update() {
 		if(particles.size() < 1)
 			return;
@@ -53,12 +52,5 @@ public class ParticleSystem {
 			p.update();
 		}
 	}
-	
-	public void render(Graphics g) {
-		for(Particle p : particles) {
-			Main.renderSurface.drawRectangle(g, Main.renderSurface.cam.getRenderRect(new Rectangle((int)p.x, (int)p.y, 3, 3)), p.col);
-		}
-	}
-	*/
 	
 }
