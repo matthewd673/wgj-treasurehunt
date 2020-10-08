@@ -1,3 +1,12 @@
+/**
+ * Created by:
+ * 						Matt Daly
+ * 			Joe Dapello
+ * Michelle
+ * 
+ * October 8 2020
+ * Game Jam 169
+ */
 package com.mattdaly.wgj.treasurehunt;
 import java.awt.*;
 import java.awt.event.ActionEvent;
