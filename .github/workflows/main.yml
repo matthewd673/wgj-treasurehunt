@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Java Build
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -28,13 +28,13 @@ jobs:
         with:
           java-version: 14
           java-package: jdk
-          
+
       - name: 'Assemble JAR'
         run: ./gradlew assemble
-          
+
       - name: 'Get JAR Version'
         run: echo "::set-env name=VERSION::$(./gradlew properties -q | grep "version:" | awk '{print $2}')"
-      
+
       - name: 'Publish JAR'
         uses: actions/upload-artifact@v2-preview
         with:
