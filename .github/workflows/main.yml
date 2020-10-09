@@ -38,8 +38,11 @@ jobs:
       - name: 'Get JAR Version'
         run: echo "::set-env name=VERSION::$(./gradlew properties -q | grep "version:" | awk '{print $2}')"
 
+      - name: 'Create artifact folder'
+        run: mkdir -p ${{ github.workspace }}/artifact
+
       - name: 'Publish JAR'
         uses: actions/upload-artifact@v2-preview
         with:
           name: ${{ env.name }}-name
-          path: ${{ github.workspace }}/artifact/wgj-treasurehunt-build.jar
+          path: ${{ github.workspace }}/artifact/**/*.jar
