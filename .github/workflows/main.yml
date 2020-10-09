@@ -28,6 +28,9 @@ jobs:
         with:
           java-version: 14
           java-package: jdk
+          
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
 
       - name: 'Assemble JAR'
         run: ./gradlew assemble
