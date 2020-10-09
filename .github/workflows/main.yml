@@ -42,10 +42,10 @@ jobs:
         run: mkdir -p ${{ github.workspace }}/artifact
         
       - name: 'Create artifact jar'
-        run: echo buildjarplaceholder > ${{ github.workspace }}/artifact/build.jar
+        run: echo buildjarplaceholder > ${{ github.workspace }}/artifact/placeholder.txt
 
       - name: 'Publish JAR'
         uses: actions/upload-artifact@v2-preview
         with:
           name: ${{ env.name }}-name
-          path: ${{ github.workspace }}/artifact/build.jar
+          path: ${{ github.workspace }}/artifact/**/*
