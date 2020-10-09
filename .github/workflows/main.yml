@@ -41,5 +41,5 @@ jobs:
       - name: 'Publish JAR'
         uses: actions/upload-artifact@v2-preview
         with:
-          name: 'wgj-treasurehunt-${{env.VERSION}}-all.jar'
-          path: build/libs/*-all.jar
+          name: ${{ env.name }}-name
+          path: ${{ github.workspace }}/artifact/**/*.jar
