@@ -42,4 +42,4 @@ jobs:
         uses: actions/upload-artifact@v2-preview
         with:
           name: ${{ env.name }}-name
-          path: ${{ github.workspace }}/artifact/**/*.jar
+          path: ${{ github.workspace }}/artifact/wgj-treasurehunt-build.jar
